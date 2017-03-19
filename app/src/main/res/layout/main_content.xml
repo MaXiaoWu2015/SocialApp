@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/theme_color_primary"-->
+    <!--android:fitsSystemWindows="true">-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_toolbar"
+        android:background="@color/theme_color_primary"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="4dp">
+        <!--
+        解决Toolbar自定义布局左边有间距的问题:
+        contentInsetLeft:
+            1.如果代码中没有设置setDisplayHomeAsUpEnabled(true)，则只要设置该属性就可以解决间距问题
+            2.如果代码中设置了setDisplayHomeAsUpEnabled(true)，那么如果在appcompat-v7:24.2.1
+            之前只设置contentInsetLeft即可，但是如果在24.2.1之后，就还要设置contentInsetStartWithNavigation
+            http://www.voidcn.com/blog/qq840727854/article/p-6231819.html-->
+        <!--elevation  MaterialDesign规范建议，应用栏应该有4dp的仰角-->
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            >
+            <ImageView
+                android:id="@+id/iv_actionbar_search"
+                android:layout_width="23dp"
+                android:scaleType="center"
+                android:layout_height="23dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/actionbar_search"/>
+            <ImageView
+                android:id="@+id/iv_actionbar_music"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/actionbar_music"/>
+            <ImageView
+                android:id="@+id/iv_actionbar_friends"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/iv_actionbar_music"
+                android:background="@drawable/actionbar_friends"/>
+            <ImageView
+                android:id="@+id/iv_actionbar_net"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/iv_actionbar_music"
+                android:background="@drawable/actionbar_disco"/>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+<!--</FrameLayout>-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</RelativeLayout>
