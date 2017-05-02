@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_music_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            app:placeholderImage="@drawable/placeholder_disk_210"
+            app:placeholderImageScaleType="fitXY" />
+
+        <com.bilibili.magicasakura.widgets.TintImageView
+            android:id="@+id/tiv_play_next"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_alignParentRight="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/playbar_btn_next"
+            app:imageTint="@color/theme_color_primary" />
+
+        <com.bilibili.magicasakura.widgets.TintImageView
+            android:id="@+id/tiv_play_btn"
+            android:layout_width="41dp"
+            android:layout_height="46dp"
+            android:layout_toLeftOf="@id/tiv_play_next"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/playbar_btn_play"
+            app:imageTint="@color/theme_color_primary" />
+
+        <com.bilibili.magicasakura.widgets.TintImageView
+            android:id="@+id/tiv_play_list"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_toLeftOf="@id/tiv_play_btn"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/playbar_btn_playlist"
+            app:imageTint="@color/theme_color_primary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/tiv_play_list"
+            android:layout_toRightOf="@id/sdv_music_icon"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                tools:text="歌名" />
+
+            <TextView
+                android:id="@+id/tv_singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                tools:text="歌手" />
+        </LinearLayout>
+
+        <com.bilibili.magicasakura.widgets.TintProgressBar
+            android:id="@+id/tpb_play_progress"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_alignParentBottom="true"
+            android:progress="0"
+            android:progressTint="@color/theme_color_primary" />
+    </RelativeLayout>
+</merge>

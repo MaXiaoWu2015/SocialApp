@@ -1,8 +1,15 @@
 package com.example.maxiaowu.societyapp.activity;
 
+import static android.os.Build.VERSION_CODES.KITKAT;
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,17 +22,15 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.maxiaowu.societyapp.adapter.DrawerLayoutAdpater;
-import com.example.maxiaowu.societyapp.adapter.model.DrawerLayoutItem;
 import com.example.maxiaowu.societyapp.R;
+import com.example.maxiaowu.societyapp.adapter.DrawerLayoutAdpater;
+import com.example.maxiaowu.societyapp.adapter.MainContentViewPagerAdapter;
+import com.example.maxiaowu.societyapp.adapter.model.DrawerLayoutItem;
+import com.example.maxiaowu.societyapp.fragment.MyMusicFragment;
+import com.example.maxiaowu.societyapp.fragment.NetMusicFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static android.os.Build.VERSION_CODES.KITKAT;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBar mActionbar;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             new DrawerLayoutItem(R.drawable.topmenu_icn_time, "定时关闭音乐"),
             new DrawerLayoutItem(R.drawable.topmenu_icn_vip, "下载歌曲品质"),
             new DrawerLayoutItem(R.drawable.topmenu_icn_exit, "退出")));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         initToolbar();
         initLeftMenu();
+        initMainContent();
+    }
+
+    private void initMainContent() {
+         ViewPager mVPMainContent= (ViewPager) findViewById(R.id.vp_main_content);
+        MainContentViewPagerAdapter mVPAdapter=new MainContentViewPagerAdapter(getSupportFragmentManager());
+        mVPAdapter.addFragment(NetMusicFragment.newInstance());
+        mVPAdapter.addFragment(MyMusicFragment.newInstance());
+        mVPMainContent.setAdapter(mVPAdapter);
+        mVPMainContent.setCurrentItem(0);
     }
 
     private void initToolbar() {
@@ -120,4 +136,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {//按下back键时的回调
+        //实现和home键一样的效果----启动launcher
+//        super.onBackPressed();  一定要注释掉
+        Intent intent=new Intent(Intent.ACTION_MAIN);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+    }
+
 }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SocietyApp</string>
+    <string name="unknown_music">未知歌曲</string>
+    <string name="unknown_singer">未知歌手</string>
+    <string name="net_music_new_music">新曲</string>
+    <string name="net_music_song_list">歌单</string>
+    <string name="net_music_billboard_hot">排行榜</string>
 </resources>

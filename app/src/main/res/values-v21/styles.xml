@@ -19,5 +19,4 @@
         <!--&lt;!&ndash;&lt;!&ndash;<item name="android:statusBarColor">#00000000</item>&ndash;&gt;&ndash;&gt;-->
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
-
 </resources>
