@@ -1,10 +1,15 @@
 package com.example.maxiaowu.societyapp.widgets.photoDraweeView;
 
+import android.animation.TimeInterpolator;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewParent;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.DraweeView;
@@ -16,31 +21,47 @@ import java.lang.ref.WeakReference;
  */
 
 class Attacher implements View.OnTouchListener{
+        private float mMinScale = 1.0f;
+        private float mMidScale = 1.75f;
+        private float mMaxScale = 3.0f;
+        private long  mZoomDuration=200L;
+
     private GestureDetectorCompat mGestureDetector;//GestureDetectorCompat可以适配到API4
     private Matrix mMatrix=new Matrix();
     private WeakReference<DraweeView<GenericDraweeHierarchy>> mDraweeView;
     private int mImageHeight;
     private int mImageWidth;
-    private RectF mRectF;
+    private RectF mRectF=new RectF();
+    private float[] mMatrixValues=new float[9];
+    private TimeInterpolator mZoomInterpolator=new AccelerateDecelerateInterpolator();
+
 
     public Attacher(DraweeView<GenericDraweeHierarchy> draweeView) {
         mDraweeView=new WeakReference<DraweeView<GenericDraweeHierarchy>>(draweeView);
-        mGestureDetector=new GestureDetectorCompat(draweeView.getContext(),new GestureListener(this));
+        mGestureDetector=new GestureDetectorCompat(draweeView.getContext(),new GestureDetector.SimpleOnGestureListener(){
+
+        });
+        mGestureDetector.setOnDoubleTapListener(new GestureListener(this));
         draweeView.setOnTouchListener(this);
 
     }
 
     public float getScale() {
-        return 0;
+        return (float) Math.sqrt(Math.pow(getMatrixValue(mMatrix,Matrix.MSCALE_X),2)+
+        Math.pow(getMatrixValue(mMatrix,Matrix.MSKEW_Y),2));
     }
-
+    public float getMatrixValue(Matrix matrix,int whichValue){
+        matrix.getValues(mMatrixValues);
+        return mMatrixValues[whichValue];
+    }
     public void setScale(float scale, float x, float y, boolean isAnimated) {
         DraweeView<GenericDraweeHierarchy> draweeView=getDraweeView();
         if (draweeView==null){
             return;
         }
         if (isAnimated){
-
+            //TODO:缩放动画
+            draweeView.post(new AnimatedZoomRunnable(getScale(),scale,x,y));
         }else{
             mMatrix.setScale(scale,scale,x,y);
             checkMatrixAndInvalidate();
@@ -83,7 +104,7 @@ class Attacher implements View.OnTouchListener{
             deltaX=viewWidth-rect.right;
         }
         mMatrix.postTranslate(deltaX,deltaY);//先有Matrix的变换,后有图像的变换
-        return false;
+        return true;
     }
 
     private float getViewWidth() {
@@ -112,7 +133,26 @@ class Attacher implements View.OnTouchListener{
     public void update(int imageWidth,int imageHeight){
         mImageWidth=imageWidth;
         mImageHeight=imageHeight;
+        updateBaseMatrix();
     }
+
+    private void updateBaseMatrix() {
+        if (mImageWidth ==-1 &&mImageHeight == -1){
+            return;
+        }
+        resetMatrx();
+
+    }
+
+    private void resetMatrx() {
+        mMatrix.reset();
+        checkMatrixBounds();
+        DraweeView<GenericDraweeHierarchy> draweeView=getDraweeView();
+        if (draweeView!=null){
+            draweeView.invalidate();
+        }
+    }
+
     public DraweeView<GenericDraweeHierarchy> getDraweeView() {
         return mDraweeView.get();
     }
@@ -124,6 +164,102 @@ class Attacher implements View.OnTouchListener{
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         //TODO:调用手势监听的onTouchEvent
-        return false;
+        int action= MotionEventCompat.getActionMasked(event);
+        switch (action){
+            case MotionEvent.ACTION_DOWN:{
+                ViewParent parent=v.getParent();
+                if (parent!=null) {
+                    parent.requestDisallowInterceptTouchEvent(true);
+                }
+            }break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:{
+                ViewParent parent=v.getParent();
+                if (parent!=null){
+                    parent.requestDisallowInterceptTouchEvent(false);
+                }
+            }
+
+        }
+        if (mGestureDetector.onTouchEvent(event)){
+            return true;
+        }
+
+        return true;//必须要返回true,因为要拦截点击事件
+    }
+
+    public float getmMinScale() {
+        return mMinScale;
+    }
+
+    public void setmMinScale(float mMinScale) {
+        this.mMinScale = mMinScale;
+    }
+
+    public float getmMidScale() {
+        return mMidScale;
+    }
+
+    public void setmMidScale(float mMidScale) {
+        this.mMidScale = mMidScale;
+    }
+
+    public float getmMaxScale() {
+        return mMaxScale;
+    }
+
+    public void setmMaxScale(float mMaxScale) {
+        this.mMaxScale = mMaxScale;
+    }
+
+    private class AnimatedZoomRunnable implements Runnable {
+        //1.插补器 TimeInterpolatpr  控制变换速率
+        //
+        private float mZoomStart;
+        private float mZoomEnd;
+        private float focalX;
+        private float focalY;
+        private long mStartTime;
+        public AnimatedZoomRunnable(float currentZoom, float targetZoom, float focalx, float focaly) {
+            mZoomStart=currentZoom;
+            mZoomEnd=targetZoom;
+            this.focalX=focalx;
+            this.focalY=focaly;
+            mStartTime=System.currentTimeMillis();
+        }
+
+        @Override
+        public void run() {
+            DraweeView<GenericDraweeHierarchy> draweeView=getDraweeView();
+            if (draweeView==null){
+                return;
+            }
+
+            float t=interpolat();
+            float scale=mZoomStart+t*(mZoomEnd-mZoomStart);
+            float detalScale=scale/getScale();//为什么还要做这一步的处理
+            onScale(detalScale,focalX,focalY);
+            if (t<1f){
+                draweeView.postDelayed(this,16L);
+            }
+
+        }
+
+        private float interpolat() {
+            float t = 1f * (System.currentTimeMillis() - mStartTime) / mZoomDuration;//mStarTime单位写成float了,导致t一直为0
+            t=Math.min(1f,t);
+            t=mZoomInterpolator.getInterpolation(t);
+            return t;
+        }
+    }
+
+    private void onScale(float detalScale, float focalX, float focalY) {
+        if (getScale()<getmMaxScale()){
+
+            //onScaleChaneListener监听
+
+            mMatrix.postScale(detalScale,detalScale,focalX,focalY);
+            checkMatrixAndInvalidate();
+        }
     }
 }

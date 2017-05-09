@@ -7,15 +7,15 @@ import android.view.MotionEvent;
  * Created by matingting on 2017/5/5.
  */
 
-public class GestureListener extends GestureDetector.SimpleOnGestureListener {
+public class GestureListener implements GestureDetector.OnDoubleTapListener {
     private Attacher mAttacher;
     public GestureListener(Attacher attacher) {
         mAttacher=attacher;
     }
 
     @Override
-    public void onLongPress(MotionEvent e) {
-        super.onLongPress(e);
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        return false;
     }
 
     @Override
@@ -23,7 +23,19 @@ public class GestureListener extends GestureDetector.SimpleOnGestureListener {
         if (mAttacher==null){
             return false;
         }
-        mAttacher.setScale(3,e.getX(),e.getY(),false);
-        return super.onDoubleTap(e);
+        float scale=mAttacher.getScale();
+        if (scale<mAttacher.getmMidScale()){
+            mAttacher.setScale(mAttacher.getmMidScale(),e.getX(),e.getY(),true);
+        }else if (scale>=mAttacher.getmMidScale() && scale<mAttacher.getmMaxScale()){
+            mAttacher.setScale(mAttacher.getmMaxScale(),e.getX(),e.getY(),true);
+        }else{
+            mAttacher.setScale(mAttacher.getmMinScale(),e.getX(),e.getY(),true);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+        return false;
     }
 }
