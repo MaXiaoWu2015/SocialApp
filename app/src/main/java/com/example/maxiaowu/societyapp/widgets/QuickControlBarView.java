@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * 底部控制栏
  */
 
-public class QuickControlBarView extends FrameLayout {
+public class QuickControlBarView extends FrameLayout implements View.OnClickListener{
     private Context mContext;
     public @BindView(R.id.tiv_play_list) TintImageView mTivPlayList;
     public @BindView(R.id.tiv_play_btn) TintImageView mTivPlayBtn;
@@ -54,7 +54,7 @@ public class QuickControlBarView extends FrameLayout {
     }
 
     public void initView(){
-
+        setOnClickListener(this);
     }
 
     public void setSongIcon(String url){
@@ -103,6 +103,12 @@ public class QuickControlBarView extends FrameLayout {
     public void setPlayProgress(int progress){
         mTpbPlayProgress.setProgress(progress);
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
     public interface OnClickPlayControlListener{
        void onClickPlayList();
        void onClickPlayMusic();

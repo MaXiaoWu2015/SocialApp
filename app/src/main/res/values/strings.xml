@@ -5,4 +5,7 @@
     <string name="net_music_new_music">新曲</string>
     <string name="net_music_song_list">歌单</string>
     <string name="net_music_billboard_hot">排行榜</string>
+    <string name="new_music_private_fm_str">私人FM</string>
+    <string name="recommend_music_daily">每日歌曲推荐</string>
+    <string name="recommend_new_musci_rank_str">云音乐新歌榜</string>
 </resources>

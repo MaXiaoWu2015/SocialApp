@@ -7,6 +7,7 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -27,6 +28,7 @@ class Attacher implements View.OnTouchListener{
         private long  mZoomDuration=200L;
 
     private GestureDetectorCompat mGestureDetector;//GestureDetectorCompat可以适配到API4
+    private ScaleGestureDetector mScaleGestureDetector;
     private Matrix mMatrix=new Matrix();
     private WeakReference<DraweeView<GenericDraweeHierarchy>> mDraweeView;
     private int mImageHeight;
@@ -34,15 +36,16 @@ class Attacher implements View.OnTouchListener{
     private RectF mRectF=new RectF();
     private float[] mMatrixValues=new float[9];
     private TimeInterpolator mZoomInterpolator=new AccelerateDecelerateInterpolator();
-
+    private ScaleDragDetectorListener mScaleDragDetectorListener;
 
     public Attacher(DraweeView<GenericDraweeHierarchy> draweeView) {
         mDraweeView=new WeakReference<DraweeView<GenericDraweeHierarchy>>(draweeView);
         mGestureDetector=new GestureDetectorCompat(draweeView.getContext(),new GestureDetector.SimpleOnGestureListener(){
 
         });
-        mGestureDetector.setOnDoubleTapListener(new GestureListener(this));
+        mGestureDetector.setOnDoubleTapListener(new DefaultDoubleTapListener(this));
         draweeView.setOnTouchListener(this);
+        mScaleGestureDetector =new ScaleGestureDetector(draweeView.getContext(),mScaleDragDetectorListener=new ScaleDragDetectorListener(this));
 
     }
 
@@ -60,7 +63,6 @@ class Attacher implements View.OnTouchListener{
             return;
         }
         if (isAnimated){
-            //TODO:缩放动画
             draweeView.post(new AnimatedZoomRunnable(getScale(),scale,x,y));
         }else{
             mMatrix.setScale(scale,scale,x,y);
@@ -163,7 +165,6 @@ class Attacher implements View.OnTouchListener{
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        //TODO:调用手势监听的onTouchEvent
         int action= MotionEventCompat.getActionMasked(event);
         switch (action){
             case MotionEvent.ACTION_DOWN:{
@@ -181,6 +182,9 @@ class Attacher implements View.OnTouchListener{
             }
 
         }
+
+        mScaleGestureDetector.onTouchEvent(event);
+
         if (mGestureDetector.onTouchEvent(event)){
             return true;
         }
@@ -212,6 +216,26 @@ class Attacher implements View.OnTouchListener{
         this.mMaxScale = mMaxScale;
     }
 
+    public void checkMinScale() {
+        DraweeView<GenericDraweeHierarchy> draweeView=getDraweeView();
+        if (draweeView==null){
+            return;
+        }
+        if (getScale()<mMinScale){
+            RectF rect=getDisplayRect();
+            if (rect!=null){
+                draweeView.post(new AnimatedZoomRunnable(getScale(),mMinScale,rect.centerX(),rect.centerY()));
+            }
+        }
+    }
+
+    private RectF getDisplayRect() {
+        checkMatrixAndInvalidate();
+        return getDisplayRect(mMatrix);
+
+
+    }
+
     private class AnimatedZoomRunnable implements Runnable {
         //1.插补器 TimeInterpolatpr  控制变换速率
         //
@@ -237,8 +261,8 @@ class Attacher implements View.OnTouchListener{
 
             float t=interpolat();
             float scale=mZoomStart+t*(mZoomEnd-mZoomStart);
-            float detalScale=scale/getScale();//为什么还要做这一步的处理
-            onScale(detalScale,focalX,focalY);
+            float detalScale=scale/getScale();//scale是按比例缩放的
+            mScaleDragDetectorListener.onScale(mScaleGestureDetector);
             if (t<1f){
                 draweeView.postDelayed(this,16L);
             }
@@ -253,11 +277,9 @@ class Attacher implements View.OnTouchListener{
         }
     }
 
-    private void onScale(float detalScale, float focalX, float focalY) {
-        if (getScale()<getmMaxScale()){
-
+    public void onScale(float detalScale, float focalX, float focalY) {
+        if (getScale()<getmMaxScale() || detalScale<1.0f ){//当前缩放比例小于最大值,或者deltalScale<1(即图片缩小)时,可以进行发图片缩放
             //onScaleChaneListener监听
-
             mMatrix.postScale(detalScale,detalScale,focalX,focalY);
             checkMatrixAndInvalidate();
         }

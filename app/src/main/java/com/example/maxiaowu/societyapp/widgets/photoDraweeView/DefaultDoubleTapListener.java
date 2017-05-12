@@ -7,9 +7,9 @@ import android.view.MotionEvent;
  * Created by matingting on 2017/5/5.
  */
 
-public class GestureListener implements GestureDetector.OnDoubleTapListener {
+public class DefaultDoubleTapListener implements GestureDetector.OnDoubleTapListener {
     private Attacher mAttacher;
-    public GestureListener(Attacher attacher) {
+    public DefaultDoubleTapListener(Attacher attacher) {
         mAttacher=attacher;
     }
 
@@ -28,7 +28,7 @@ public class GestureListener implements GestureDetector.OnDoubleTapListener {
             mAttacher.setScale(mAttacher.getmMidScale(),e.getX(),e.getY(),true);
         }else if (scale>=mAttacher.getmMidScale() && scale<mAttacher.getmMaxScale()){
             mAttacher.setScale(mAttacher.getmMaxScale(),e.getX(),e.getY(),true);
-        }else{
+        }else if (scale>=mAttacher.getmMaxScale()){
             mAttacher.setScale(mAttacher.getmMinScale(),e.getX(),e.getY(),true);
         }
         return true;
