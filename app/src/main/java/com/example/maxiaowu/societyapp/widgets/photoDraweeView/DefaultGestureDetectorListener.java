@@ -1,5 +1,6 @@
 package com.example.maxiaowu.societyapp.widgets.photoDraweeView;
 
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -7,9 +8,10 @@ import android.view.MotionEvent;
  * Created by matingting on 2017/5/5.
  */
 
-public class DefaultDoubleTapListener implements GestureDetector.OnDoubleTapListener {
+public class DefaultGestureDetectorListener extends GestureDetector.SimpleOnGestureListener {
+    private static final String TAG = "DefaultGestureDetectorL";
     private Attacher mAttacher;
-    public DefaultDoubleTapListener(Attacher attacher) {
+    public DefaultGestureDetectorListener(Attacher attacher) {
         mAttacher=attacher;
     }
 
@@ -31,6 +33,14 @@ public class DefaultDoubleTapListener implements GestureDetector.OnDoubleTapList
         }else if (scale>=mAttacher.getmMaxScale()){
             mAttacher.setScale(mAttacher.getmMinScale(),e.getX(),e.getY(),true);
         }
+        return true;
+    }
+
+    //TODO:手指Fling后图片移动
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        mAttacher.onFling(((int)velocityX),((int)velocityY));//减速运动
+        Log.d(TAG, "onFling: "+e1.getX()+"--"+e1.getY()+":"+e2.getX()+"---"+e2.getY());
         return true;
     }
 

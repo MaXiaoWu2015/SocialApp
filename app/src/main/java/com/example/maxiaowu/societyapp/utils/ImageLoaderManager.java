@@ -1,6 +1,8 @@
 package com.example.maxiaowu.societyapp.utils;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.AbstractDraweeControllerBuilder;
@@ -41,5 +43,19 @@ public class ImageLoaderManager {
         }
         DraweeController controller=draweeControllerBuilder.build();
         draweeView.setController(controller);
+    }
+
+    /***
+     *   获取图片大小
+     */
+
+    public int getBitmapSize(Bitmap bitmap){
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT){
+            return bitmap.getAllocationByteCount();
+        }else if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB_MR1){
+            return bitmap.getByteCount();
+        }else{
+            return bitmap.getRowBytes()*bitmap.getHeight();
+        }
     }
 }

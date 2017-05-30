@@ -56,4 +56,10 @@ public class PhotoDraweeView extends SimpleDraweeView {
             mAttacher.update(width,height);
         }
     }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        mAttacher.onDetachFromWindow();
+        super.onDetachedFromWindow();
+    }
 }
