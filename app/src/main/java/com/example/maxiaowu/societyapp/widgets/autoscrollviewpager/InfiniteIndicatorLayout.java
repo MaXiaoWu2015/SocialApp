@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 import com.example.maxiaowu.societyapp.R;
-import com.example.maxiaowu.societyapp.adapter.RecycleAdapter;
+import com.example.maxiaowu.societyapp.adapter.RecyclingPagerAdapter;
 import com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.indicator.CirclePageIndicator;
 
 import butterknife.BindView;
@@ -69,7 +69,7 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mImagesCount = imagesCount;
     }
 
-    class RecylablePagerAdapter extends RecycleAdapter{
+    class RecylablePagerAdapter extends RecyclingPagerAdapter {
         private int mCount;
         private Context mContext;
 
