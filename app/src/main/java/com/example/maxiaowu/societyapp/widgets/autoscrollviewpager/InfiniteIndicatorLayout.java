@@ -3,27 +3,36 @@ package com.example.maxiaowu.societyapp.widgets.autoscrollviewpager;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.RecyclingPagerAdapter;
+import com.example.maxiaowu.societyapp.utils.ImageLoaderManager;
 import com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.indicator.CirclePageIndicator;
+import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by matingting on 2017/5/31.
+ * TODO:给ViewPager加上页面滑动动画 Page Transformer
  */
 
 public class InfiniteIndicatorLayout extends RelativeLayout implements
         ViewPager.OnPageChangeListener {
     private Context mContext;
-    private @BindView(R.id.vp_img) ViewPager mViewPager;
-    private @BindView(R.id.cpi_for_img) CirclePageIndicator mPageIndicators;
-
-    private RecylablePagerAdapter mPagerAdapter;
-    private int mImagesCount;
+    public  @BindView(R.id.vp_img) ViewPager mViewPager;
+    public  @BindView(R.id.cpi_for_img) CirclePageIndicator mPageIndicators;
+    private ArrayList<String> mImageUrls;
+    private RecyclablePagerAdapter mPagerAdapter;
+    private int mImagesCount=4;
     public InfiniteIndicatorLayout(Context context) {
         super(context);
         this.init(context);
@@ -42,12 +51,23 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mContext=context;
         inflate(mContext,R.layout.infinite_indicator_layout,this);
         ButterKnife.bind(this);
-
+        initData();
         mViewPager.addOnPageChangeListener(this);
-        mPagerAdapter=new RecylablePagerAdapter(mImagesCount,mContext);
+        mPagerAdapter=new RecyclablePagerAdapter(mImagesCount,mContext);
+        mPagerAdapter.setImageUrls(mImageUrls);
         mViewPager.setAdapter(mPagerAdapter);
         mPageIndicators.setViewPager(mViewPager);
+    }
 
+    public void initData(){
+//        mImageUrls=new ArrayList<>(Arrays.asList("http://business.cdn.qianqian.com/qianqian/pic/bos_client_14962159099c2ea0bd507d060f6fdf388edf4d2e99.jpg"
+//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_1495789484dc0b75f81f249fa3479032f2eb662dc4.jpg"
+//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_14957057549566557e02bd868968cc35e7f94083b1.jpg"
+//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_149587343811606d084cf4dbd7ceec85ebb0b69aa1.jpg"));
+        mImageUrls=new ArrayList<>(Arrays.asList("res://"+mContext.getPackageName() +"/" + R.drawable.first
+                ,"res://"+mContext.getPackageName() +"/" + R.drawable.first1
+                ,"res://"+mContext.getPackageName() +"/" + R.drawable.first2
+                ,"res://"+mContext.getPackageName() +"/" + R.drawable.first3));
     }
 
     @Override
@@ -69,14 +89,45 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mImagesCount = imagesCount;
     }
 
-    class RecylablePagerAdapter extends RecyclingPagerAdapter {
+    class RecyclablePagerAdapter extends RecyclingPagerAdapter {
+        public final static int TAG_KEY_URL=0;
         private int mCount;
         private Context mContext;
+        private ArrayList<String> mImageUrls;
 
-        public RecylablePagerAdapter(int count, Context context) {
+
+        public RecyclablePagerAdapter(int count, Context context) {
             mCount = count;
             mContext = context;
+            mImageUrls=new ArrayList<>();
         }
 
+        public void setImageUrls(ArrayList<String> imageUrls) {
+            mImageUrls = imageUrls;
+        }
+
+        @Override
+        public View getView(ViewGroup container, View convertView, int position) {
+            ViewHolder viewHolder=null;
+            if (convertView==null){
+                convertView=LayoutInflater.from(mContext).inflate(R.layout.infinite_indicator_layout_item,container,false);
+                viewHolder=new ViewHolder(convertView);
+                convertView.setTag(viewHolder);
+                viewHolder.mDraweeView.setTag(mImageUrls.get(position));
+            }
+            viewHolder= (ViewHolder) convertView.getTag();
+            String urlTag= (String) viewHolder.mDraweeView.getTag(TAG_KEY_URL);
+            String url=mImageUrls.get(position);
+            if (!url.equals(urlTag)){
+                ImageLoaderManager.loadImage(url,viewHolder.mDraweeView,false);
+            }
+            return convertView;
+        }
+         class ViewHolder{
+             SimpleDraweeView mDraweeView;
+             public ViewHolder(View itemView) {
+                 mDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.dv_img);
+             }
+         }
     }
 }

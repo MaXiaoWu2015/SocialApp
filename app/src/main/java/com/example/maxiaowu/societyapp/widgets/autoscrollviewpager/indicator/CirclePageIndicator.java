@@ -76,6 +76,7 @@ public class CirclePageIndicator extends View implements PageIndicator{
         mPaintStroke.setAntiAlias(true);
         mPaintStroke.setDither(false);
         mPaintStroke.setStyle(Paint.Style.FILL_AND_STROKE);
+        mPaintStroke.setStrokeWidth(2.0f);
         mPaintStroke.setColor(resources.getColor(DEFAULT_CIRCLE_COLOR));
 
 //        mPaintFilll=new Paint();
@@ -106,7 +107,22 @@ public class CirclePageIndicator extends View implements PageIndicator{
         super.onDraw(canvas);
         float cX,cSelectedX;
         float cY,cSelectedY;
+        int width,height;
+        int paddingleft,paddingRight;
+        int paddingBottom,paddingTop;
         mCount=getCount();
+
+        if (mOrientation==HORIZONTAL){
+            width=getWidth();
+            paddingleft=getPaddingLeft();
+            paddingRight=getPaddingRight();
+        }else if (mOrientation==VERTICAL){
+            height=getHeight();
+            paddingTop=getPaddingTop();
+            paddingBottom=getPaddingBottom();
+        }
+
+
         for (int i=0;i<mCount;i++){
            if (mOrientation==HORIZONTAL){
                cX=mCircleRadius + i * (2 * mCircleRadius + mCircleMargin);

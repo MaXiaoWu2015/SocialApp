@@ -23,7 +23,7 @@ public class NewMusicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.new_music_frag,container,true);
+        View view=inflater.inflate(R.layout.new_music_frag,container,false);//TODO:fix为什么最后一个参数不能设置为true
         return view;
     }
 }
