@@ -41,6 +41,7 @@ public class CirclePageIndicator extends View implements PageIndicator{
     private Paint mPaintFilll;
     private Paint mPaintSelectedFill;
     private int   mCurPosition;
+    private boolean mIsCentered;
 
     private ViewPager mViewPager;
     public CirclePageIndicator(Context context) {
@@ -70,7 +71,7 @@ public class CirclePageIndicator extends View implements PageIndicator{
         mCircleColor=typedArray.getColor(R.styleable.CirclePageIndicator_circle_color,resources.getColor(DEFAULT_CIRCLE_COLOR));
         mCircleSelectedColor=typedArray.getColor(R.styleable.CirclePageIndicator_circle_selected_color,resources.getColor(DEFAULT_CIRCLE_SELECTED_COLOR));
         mOrientation=typedArray.getInt(R.styleable.CirclePageIndicator_orientation,DEFAULT_CIRCLE_ORIENTATION);
-
+        mIsCentered=typedArray.getBoolean(R.styleable.CirclePageIndicator_circle_center,true);
 
         mPaintStroke =new Paint();
         mPaintStroke.setAntiAlias(true);
@@ -103,40 +104,93 @@ public class CirclePageIndicator extends View implements PageIndicator{
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        mCount=getCount();
+        if (mOrientation==HORIZONTAL){
+            setMeasuredDimension(measureLong(widthMeasureSpec),measureShort(heightMeasureSpec));
+        }else{
+            setMeasuredDimension(measureShort(widthMeasureSpec),measureLong(heightMeasureSpec));
+        }
+    }
+
+    private int measureShort(int measureSpec) {
+        int result;
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+        if (specMode == MeasureSpec.EXACTLY || mViewPager == null){
+            result=specSize;
+        } else {
+            result= (int) (getPaddingBottom()+getPaddingTop()+mCircleRadius*2);
+            if (specMode == MeasureSpec.AT_MOST){
+                result=Math.min(result,specSize);
+            }
+        }
+        return result;
+    }
+
+    private int measureLong(int measureSpec) {
+        int result;
+        int specMode=MeasureSpec.getMode(measureSpec);
+        int specSize=MeasureSpec.getSize(measureSpec);
+        if (specMode==MeasureSpec.EXACTLY || mViewPager==null){
+            result=specSize;
+        }else{
+            result= (int) (getPaddingLeft()+getPaddingRight()+mCount*mCircleRadius*2+(mCount-1)*mCircleMargin);
+
+            if (specMode==MeasureSpec.AT_MOST){
+                result=Math.min(result,specSize);
+            }
+        }
+        return result;
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         float cX,cSelectedX;
         float cY,cSelectedY;
         int width,height;
-        int paddingleft,paddingRight;
-        int paddingBottom,paddingTop;
+        int paddingleft=0,paddingRight=0;
+        int paddingBottom=0,paddingTop=0;
+        float offset=0;
         mCount=getCount();
+        float circleLength=(mCount*(mCircleRadius*2)+mCircleMargin*(mCount-1));
 
         if (mOrientation==HORIZONTAL){
             width=getWidth();
             paddingleft=getPaddingLeft();
             paddingRight=getPaddingRight();
+            if (mIsCentered){
+                offset=(width-paddingleft-paddingRight)/2-circleLength/2;
+            }else{
+                offset=paddingleft;
+            }
         }else if (mOrientation==VERTICAL){
             height=getHeight();
             paddingTop=getPaddingTop();
             paddingBottom=getPaddingBottom();
+            if (mIsCentered){
+                offset=(height-paddingleft-paddingRight)/2-circleLength/2;
+            }else{
+                offset=paddingTop;
+            }
         }
 
 
         for (int i=0;i<mCount;i++){
            if (mOrientation==HORIZONTAL){
-               cX=mCircleRadius + i * (2 * mCircleRadius + mCircleMargin);
+               cX=offset+mCircleRadius + i * (2 * mCircleRadius + mCircleMargin);
                cY=mCircleRadius;
            }else {
                cX=mCircleRadius;
-               cY=mCircleRadius+i*(2*mCircleRadius+mCircleMargin);
+               cY=offset+mCircleRadius+i*(2*mCircleRadius+mCircleMargin);
            }
         canvas.drawCircle(cX,cY,mCircleRadius, mPaintStroke);
         if (mOrientation==HORIZONTAL){
-            cSelectedX=mCircleRadius + mCurPosition * (2 * mCircleRadius + mCircleMargin);
+            cSelectedX=offset+mCircleRadius + mCurPosition * (2 * mCircleRadius + mCircleMargin);
             cSelectedY=mCircleRadius;
         }else{
-           cSelectedY=mCircleRadius+i*(mCurPosition*mCircleRadius+mCircleMargin);
+           cSelectedY=offset+mCircleRadius+i*(mCurPosition*mCircleRadius+mCircleMargin);
            cSelectedX=mCircleRadius;
         }
         canvas.drawCircle(cSelectedX,cSelectedY,mCircleRadius,mPaintSelectedFill);

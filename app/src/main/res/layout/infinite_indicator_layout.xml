@@ -11,13 +11,13 @@
     <com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.indicator.CirclePageIndicator
         android:id="@+id/cpi_for_img"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="30dp"
+        android:layout_marginBottom="10dp"
         app:circle_radius="3dp"
         app:circle_margin="10dp"
         app:orientation="horizontal"
+        app:circle_center="true"
         />
 
 </RelativeLayout>

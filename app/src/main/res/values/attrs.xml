@@ -17,5 +17,6 @@
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
+        <attr name="circle_center"  format="boolean"/>
     </declare-styleable>
 </resources>
