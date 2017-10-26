@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/KingMusic.iml" filepath="$PROJECT_DIR$/KingMusic.iml" />
       <module fileurl="file://$PROJECT_DIR$/SocialApp.iml" filepath="$PROJECT_DIR$/SocialApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router-annotation/router-annotation.iml" filepath="$PROJECT_DIR$/router-annotation/router-annotation.iml" />
     </modules>
   </component>
 </project>

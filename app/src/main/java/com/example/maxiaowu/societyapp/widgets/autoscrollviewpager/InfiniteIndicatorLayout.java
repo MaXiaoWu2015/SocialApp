@@ -1,6 +1,8 @@
 package com.example.maxiaowu.societyapp.widgets.autoscrollviewpager;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import com.example.maxiaowu.societyapp.utils.ImageLoaderManager;
 import com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.indicator.CirclePageIndicator;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,6 +36,26 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
     private ArrayList<String> mImageUrls;
     private RecyclablePagerAdapter mPagerAdapter;
     private int mImagesCount=4;
+    public static final int MSG_WHAT = 0;
+    private ScrollHandler mScrollHandler ;
+
+    class ScrollHandler extends Handler{
+
+        WeakReference<InfiniteIndicatorLayout> mLayoutWeakReference;
+
+        public ScrollHandler(InfiniteIndicatorLayout layoutWeakReference) {
+            mLayoutWeakReference = new WeakReference<InfiniteIndicatorLayout>(layoutWeakReference);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case MSG_WHAT:
+            }
+        }
+    };
+
+
     public InfiniteIndicatorLayout(Context context) {
         super(context);
         this.init(context);
@@ -57,6 +80,9 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mPagerAdapter.setImageUrls(mImageUrls);
         mViewPager.setAdapter(mPagerAdapter);
         mPageIndicators.setViewPager(mViewPager);
+
+        mScrollHandler = new ScrollHandler(this);
+
     }
 
     public void initData(){
@@ -84,6 +110,18 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    public void startAutoScroll(){
+        if (mImagesCount > 1){
+            sendScrollMessage();
+        }
+    }
+
+    private void sendScrollMessage() {
+        mScrollHandler.removeMessages(MSG_WHAT);
+        mScrollHandler.sendEmptyMessage(MSG_WHAT);
+    }
+
 
     public void setImagesCount(int imagesCount) {
         mImagesCount = imagesCount;
