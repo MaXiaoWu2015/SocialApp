@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.inject.Inject;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.DrawerLayoutAdpater;
 import com.example.maxiaowu.societyapp.adapter.MainContentViewPagerAdapter;
@@ -34,7 +35,7 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 public class MainActivity extends AppCompatActivity {
 
-    public  String desc;
+    public @Inject String desc;
 
     private ActionBar mActionbar;
     private ListView mLeftMenuLv;
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getIntent().hasExtra("desc")){
-            desc = getIntent().getStringExtra("desc");
-        }
+//        if (getIntent().hasExtra("desc")){
+//            desc = getIntent().getStringExtra("desc");
+//        }
 
 
         initView();
