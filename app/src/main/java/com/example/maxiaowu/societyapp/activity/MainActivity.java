@@ -1,10 +1,5 @@
 package com.example.maxiaowu.societyapp.activity;
 
-import static android.os.Build.VERSION_CODES.KITKAT;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -32,7 +27,15 @@ import com.example.maxiaowu.societyapp.fragment.NetMusicFragment;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static android.os.Build.VERSION_CODES.KITKAT;
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+
 public class MainActivity extends AppCompatActivity {
+
+    public  String desc;
+
     private ActionBar mActionbar;
     private ListView mLeftMenuLv;
     private DrawerLayout mDrawerLayout;
@@ -48,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (getIntent().hasExtra("desc")){
+            desc = getIntent().getStringExtra("desc");
+        }
+
+
         initView();
     }
 

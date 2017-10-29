@@ -6,11 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by matingting on 2017/10/26.
+ * Created by maxiaowu on 2017/10/28.
+ *跳转Uri的参数
  */
-@Target(ElementType.METHOD)
+@Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RouteUri {
+public @interface UriParam {
 
     String value() default "";
 
