@@ -6,6 +6,7 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeName;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -22,6 +23,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
+import javax.tools.Diagnostic;
 
 /**
  * Created by maxiaowu on 2017/10/29.
@@ -72,11 +74,16 @@ public class InjectProcessor extends AbstractProcessor {
 
         }
 
-        for (Map.Entry<TypeElement,TargetClass> entry: targetClassMap.entrySet()){
-           JavaFile javaFile = entry.getValue().brewJava();
-           javaFile.writeTo(filer);
+        try {
+            for (Map.Entry<TypeElement,TargetClass> entry: targetClassMap.entrySet()){
+                JavaFile javaFile = entry.getValue().brewJava();
+                javaFile.writeTo(filer);
+
+            }
+        }catch (IOException e){
 
         }
+
 
         return false;
     }
@@ -148,5 +155,15 @@ public class InjectProcessor extends AbstractProcessor {
         set.add(Inject.class.getSimpleName());
 
         return set;
+    }
+    private void error(Element element, String message, Object... args) {
+        printMessage(Diagnostic.Kind.ERROR, element, message, args);
+    }
+
+    private void printMessage(Diagnostic.Kind kind, Element element, String message, Object[] args) {
+        if (args.length > 0) {
+            message = String.format(message, args);
+        }
+        processingEnv.getMessager().printMessage(kind, message, element);
     }
 }

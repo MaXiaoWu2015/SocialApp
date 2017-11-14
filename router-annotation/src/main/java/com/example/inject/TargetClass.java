@@ -43,8 +43,8 @@ class TargetClass {
     }
 
     public JavaFile brewJava(){
-
-        TypeName targetClassName = TypeVariableName.get("T");//为了创建构造方法
+      //为了创建构造方法
+        TypeName targetClassName = TypeVariableName.get("T");
 
         TypeSpec.Builder builder = TypeSpec.classBuilder(inJectingClassName)
                 .addModifiers(Modifier.PUBLIC)

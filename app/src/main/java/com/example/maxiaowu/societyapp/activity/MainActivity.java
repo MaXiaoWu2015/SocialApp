@@ -35,7 +35,10 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 public class MainActivity extends AppCompatActivity {
 
-    public @Inject String desc;
+     @Inject String desc;
+
+     @Inject int age;
+
 
     private ActionBar mActionbar;
     private ListView mLeftMenuLv;
