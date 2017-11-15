@@ -4,7 +4,7 @@ android {
     buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "com.example.maxiaowu.societyapp"
-        minSdkVersion 11
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -38,4 +38,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile project(path: ':router-annotation')
+    compile project(path: ':router-compile')
 }

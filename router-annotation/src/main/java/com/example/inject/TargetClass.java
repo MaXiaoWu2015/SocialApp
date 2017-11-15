@@ -21,7 +21,7 @@ import javax.lang.model.element.Modifier;
 
 class TargetClass {
 
-    private static final ClassName PARAMETERS_INJECTOR = ClassName.get("","");
+    private static final ClassName PARAMETERS_INJECTOR = ClassName.get("com.iqiyi.maxiaowu.router_compiler","ParametersInjector");
 
     private ArrayList<FieldInJectedEntity> fieldInJectedList = new ArrayList<>();
 
@@ -46,10 +46,10 @@ class TargetClass {
       //为了创建构造方法
         TypeName targetClassName = TypeVariableName.get("T");
 
-        TypeSpec.Builder builder = TypeSpec.classBuilder(inJectingClassName)
+        TypeSpec.Builder builder = TypeSpec.classBuilder(inJectingClassName.simpleName())
                 .addModifiers(Modifier.PUBLIC)
                 .addMethod(createMethodCode(targetTypeName))
-                .addTypeVariable(TypeVariableName.get("T",targetClassName))
+                .addTypeVariable(TypeVariableName.get("T",targetTypeName))
                 .addSuperinterface(PARAMETERS_INJECTOR);
         return JavaFile.builder(inJectingClassName.packageName(),builder.build())
                 .addFileComment("Generated")
@@ -66,7 +66,7 @@ class TargetClass {
                     .add("target.$L = ",entity.getName())
                     .add("target.getIntent().")
                     .add(getTypeStatement(mTypeTools.convertType(entity.getTypeMirror()),
-                            true))
+                            true),entity.getParamKet())
                     .build();
             builder.addCode(codeBlock);
         }

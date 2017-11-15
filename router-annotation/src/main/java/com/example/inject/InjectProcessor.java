@@ -7,16 +7,22 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeName;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
+import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
@@ -35,6 +41,7 @@ public class InjectProcessor extends AbstractProcessor {
     private Types types;
     private Elements elements;
     private Filer filer;
+    private Messager messager;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -48,22 +55,28 @@ public class InjectProcessor extends AbstractProcessor {
 
         mTypeTools = new TypeTools(types,elements);
 
+        messager = processingEnv.getMessager();
+
+        messager.printMessage(Diagnostic.Kind.NOTE,"processor init ");
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-
+        messager.printMessage(Diagnostic.Kind.NOTE,"processor process ");
         Map<TypeElement,TargetClass> targetClassMap = new LinkedHashMap<>();
 
         for (TypeElement annotationElement : annotations){
 
             //TODO:getElementsAnnotatedWith的返回值是Set<? extends Element>,如果elements定义成Set<Element>,会提示类型转换异常的错误
             Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(annotationElement);
-            if (annotationElement.getSimpleName().equals(Inject.class.getSimpleName())){
+
+//            if (annotationElement.getSimpleName().equals(Inject.class.getSimpleName())){
 
                 for (Element element:elements){
                     //1.检验被注解的元素的合法性
                     boolean isInValid = isInValidAnnotation(element);
+                    messager.printMessage(Diagnostic.Kind.NOTE,"processor : "+isInValid);
+
                     if (!isInValid){
                          getAndParseTargetMap(targetClassMap,element);
                     }
@@ -72,7 +85,7 @@ public class InjectProcessor extends AbstractProcessor {
 
             }
 
-        }
+//        }
 
         try {
             for (Map.Entry<TypeElement,TargetClass> entry: targetClassMap.entrySet()){
@@ -148,11 +161,25 @@ public class InjectProcessor extends AbstractProcessor {
     }
 
 
+
+    private static final List<Class<? extends Annotation>> ANNOTATIONS = Arrays.asList(
+            Inject.class,InjectParam.class
+    );
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.RELEASE_7;
+    }
+
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-
         Set<String> set = new HashSet<>();
-        set.add(Inject.class.getSimpleName());
+        set.add(Inject.class.getCanonicalName());
+
+
+//        Set<String> types = new LinkedHashSet<>();
+
+
 
         return set;
     }

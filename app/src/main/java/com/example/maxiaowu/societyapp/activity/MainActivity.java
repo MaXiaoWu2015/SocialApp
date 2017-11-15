@@ -24,6 +24,7 @@ import com.example.maxiaowu.societyapp.adapter.MainContentViewPagerAdapter;
 import com.example.maxiaowu.societyapp.adapter.model.DrawerLayoutItem;
 import com.example.maxiaowu.societyapp.fragment.MyMusicFragment;
 import com.example.maxiaowu.societyapp.fragment.NetMusicFragment;
+import com.iqiyi.maxiaowu.router_compiler.RouterInjector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        RouterInjector.inject(this);
 //        if (getIntent().hasExtra("desc")){
 //            desc = getIntent().getStringExtra("desc");
 //        }
