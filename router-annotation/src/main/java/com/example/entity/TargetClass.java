@@ -1,7 +1,9 @@
-package com.example.inject;
+package com.example.entity;
 
 import static javax.lang.model.element.Modifier.PUBLIC;
 
+import com.example.utils.Constants;
+import com.example.utils.TypeTools;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.JavaFile;
@@ -19,7 +21,7 @@ import javax.lang.model.element.Modifier;
  * Created by matingting on 2017/11/12.
  */
 
-class TargetClass {
+public class TargetClass {
 
     private static final ClassName PARAMETERS_INJECTOR = ClassName.get("com.iqiyi.maxiaowu.router_compiler","ParametersInjector");
 
@@ -66,7 +68,7 @@ class TargetClass {
                     .add("target.$L = ",entity.getName())
                     .add("target.getIntent().")
                     .add(getTypeStatement(mTypeTools.convertType(entity.getTypeMirror()),
-                            true),entity.getParamKet())
+                            true),entity.getParamKey())
                     .build();
             builder.addCode(codeBlock);
         }

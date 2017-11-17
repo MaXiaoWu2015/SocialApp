@@ -1,17 +1,12 @@
-package com.example.router;
+package com.example.inject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * Created by matingting on 2017/10/26.
- */
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface RouteUri {
-
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.CLASS)
+public @interface IntentParamInject {
     String value() default "";
-
 }

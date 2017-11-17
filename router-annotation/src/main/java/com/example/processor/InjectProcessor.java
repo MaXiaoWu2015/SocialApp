@@ -1,6 +1,11 @@
-package com.example.inject;
+package com.example.processor;
 
 
+import com.example.entity.FieldInJectedEntity;
+import com.example.entity.TargetClass;
+import com.example.inject.IntentParamInject;
+import com.example.inject.InjectParam;
+import com.example.utils.TypeTools;
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -11,7 +16,6 @@ import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,14 +38,18 @@ import javax.tools.Diagnostic;
 /**
  * Created by maxiaowu on 2017/10/29.
  */
+//TODO: 注解处理器框架：1.注解相关   2.反射相关    3. Element----TypeMirror
+//TODO:Router框架: 1.动态代理
+
 @AutoService(Processor.class)
 public class InjectProcessor extends AbstractProcessor {
 
     private TypeTools mTypeTools;
-    private Types types;
-    private Elements elements;
-    private Filer filer;
+    private Types types;//处理TypeMirror的工具类
+    private Elements elements;//处理element的工具类
+    private Filer filer;//注解处理器创建文件时需要的接口
     private Messager messager;
+    private Map<TypeElement, TargetClass> targetClassMap;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -60,69 +68,78 @@ public class InjectProcessor extends AbstractProcessor {
         messager.printMessage(Diagnostic.Kind.NOTE,"processor init ");
     }
 
+    /**
+     *  annotations 该处理器支持的注解类型
+     * */
+
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        messager.printMessage(Diagnostic.Kind.NOTE,"processor process ");
-        Map<TypeElement,TargetClass> targetClassMap = new LinkedHashMap<>();
+        messager.printMessage(Diagnostic.Kind.NOTE, "processor process ");
+         targetClassMap = new LinkedHashMap<>();
 
-        for (TypeElement annotationElement : annotations){
-
+        for (TypeElement annotationElement : annotations) {
             //TODO:getElementsAnnotatedWith的返回值是Set<? extends Element>,如果elements定义成Set<Element>,会提示类型转换异常的错误
             Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(annotationElement);
-
-//            if (annotationElement.getSimpleName().equals(Inject.class.getSimpleName())){
-
-                for (Element element:elements){
+                for (Element element : elements) {
                     //1.检验被注解的元素的合法性
                     boolean isInValid = isInValidAnnotation(element);
-                    messager.printMessage(Diagnostic.Kind.NOTE,"processor : "+isInValid);
-
-                    if (!isInValid){
-                         getAndParseTargetMap(targetClassMap,element);
+                    messager.printMessage(Diagnostic.Kind.NOTE, "processor : " + isInValid);
+                    if (!isInValid) {
+                        TargetClass targetClass = createTargetClass(element,annotationElement);
+                        targetClassMap.put((TypeElement) element.getEnclosingElement(),targetClass);
                     }
                 }
 
+            try {
+                for (Map.Entry<TypeElement, TargetClass> entry : targetClassMap.entrySet()) {
+                    JavaFile javaFile = entry.getValue().brewJava();
+                    javaFile.writeTo(filer);
+
+                }
+            } catch (IOException e) {
 
             }
 
-//        }
-
-        try {
-            for (Map.Entry<TypeElement,TargetClass> entry: targetClassMap.entrySet()){
-                JavaFile javaFile = entry.getValue().brewJava();
-                javaFile.writeTo(filer);
-
-            }
-        }catch (IOException e){
 
         }
 
+        messager.printMessage(Diagnostic.Kind.NOTE,"targerClassMap:"+targetClassMap.size());
 
         return false;
     }
-
-    private void getAndParseTargetMap(Map<TypeElement, TargetClass> targetClassMap,
-            Element element) {
+    private TargetClass createTargetClass(Element element,TypeElement annotationElement) {
 
         TypeElement enclosingElemnt = (TypeElement) element.getEnclosingElement();
 
-        TypeName targetTypeName = TypeName.get(enclosingElemnt.asType());
+        TargetClass targetClass = targetClassMap.get(enclosingElemnt);
 
-        String packageName = getPackageName(enclosingElemnt);
+        if (targetClass == null){
 
-        String className = getClassName(enclosingElemnt,packageName);
-        ClassName bindClassName = ClassName.get(packageName,className+"_RouterInjecting");
-        TargetClass targetClass = new TargetClass(mTypeTools,targetTypeName,bindClassName);
+            TypeName targetTypeName = TypeName.get(enclosingElemnt.asType());
 
-        String paramKey = element.getAnnotation(Inject.class).value();
+            String packageName = getPackageName(enclosingElemnt);
 
-        FieldInJectedEntity entity = new FieldInJectedEntity(element.getSimpleName().toString()
-                ,paramKey,Inject.class,element.asType());
+            String className = getClassName(enclosingElemnt,packageName);
 
-        targetClass.addFiledInjected(entity);
+            ClassName bindClassName = ClassName.get(packageName,enclosingElemnt.getSimpleName()+"_RouterInjecting");
 
-        targetClassMap.put(enclosingElemnt,targetClass);
+            targetClass = new TargetClass(mTypeTools,targetTypeName,bindClassName);
+        }
 
+        String paramKey = "";
+        FieldInJectedEntity entity;
+
+        if (annotationElement.getSimpleName().toString().equals(IntentParamInject.class.getSimpleName())) {
+
+             paramKey = element.getAnnotation(IntentParamInject.class).value();
+
+             entity = new FieldInJectedEntity(element.getSimpleName().toString()
+                     ,paramKey,IntentParamInject.class,element.asType());
+
+            targetClass.addFiledInjected(entity);
+        }
+
+        return targetClass;
     }
 
 
@@ -131,7 +148,6 @@ public class InjectProcessor extends AbstractProcessor {
         int len = packageName.length()+1;
 
         return enclosingElemnt.getQualifiedName().toString().substring(len).replace(".","$");
-
     }
 
     private String getPackageName(TypeElement enclosingElemnt) {
@@ -141,19 +157,31 @@ public class InjectProcessor extends AbstractProcessor {
     private boolean isInValidAnnotation(Element element) {
         //1.被public修饰的元素，才能调用到(为什么不能是static修饰的)
         if (element.getModifiers().contains(Modifier.PRIVATE) || element.getModifiers().contains(Modifier.STATIC)){
+
+            messager.printMessage(Diagnostic.Kind.ERROR,"被注解的元素应该是public!");
+
             return true;
         }
 
         //2.必须是成员变量
         if (element.getKind() != ElementKind.FIELD){
+
+            messager.printMessage(Diagnostic.Kind.ERROR,"被注解的元素必须是域");
+
             return true;
         }
 
         if(element.getEnclosingElement().getKind() != ElementKind.CLASS){
+
+            messager.printMessage(Diagnostic.Kind.ERROR,"被注解的元素必须在类里");
+
             return true;
         }
 
         if (element.getEnclosingElement().getModifiers().contains(Modifier.PRIVATE)){
+
+            messager.printMessage(Diagnostic.Kind.ERROR,"被注解的元素所在的类必须是public");
+
             return true;
         }
 
@@ -163,7 +191,7 @@ public class InjectProcessor extends AbstractProcessor {
 
 
     private static final List<Class<? extends Annotation>> ANNOTATIONS = Arrays.asList(
-            Inject.class,InjectParam.class
+            IntentParamInject.class,InjectParam.class
     );
 
     @Override
@@ -174,7 +202,7 @@ public class InjectProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> set = new HashSet<>();
-        set.add(Inject.class.getCanonicalName());
+        set.add(IntentParamInject.class.getCanonicalName());
 
 
 //        Set<String> types = new LinkedHashSet<>();

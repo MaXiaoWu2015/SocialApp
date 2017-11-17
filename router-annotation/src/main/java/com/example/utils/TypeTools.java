@@ -1,4 +1,6 @@
-package com.example.inject;
+package com.example.utils;
+
+import com.example.utils.Constants;
 
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
@@ -8,7 +10,7 @@ import javax.lang.model.util.Types;
  * Created by matingting on 2017/11/12.
  */
 
-class TypeTools {
+public class TypeTools {
 
     private Types typeUtils;
 

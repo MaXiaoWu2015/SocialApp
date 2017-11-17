@@ -17,7 +17,8 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.inject.Inject;
+import com.example.annotation.RouteUri;
+import com.example.inject.IntentParamInject;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.DrawerLayoutAdpater;
 import com.example.maxiaowu.societyapp.adapter.MainContentViewPagerAdapter;
@@ -36,9 +37,11 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 public class MainActivity extends AppCompatActivity {
 
-     @Inject String desc;
+     @IntentParamInject("desc")
+     String desc;
 
-     @Inject int age;
+     @IntentParamInject("age")
+     int age;
 
 
     private ActionBar mActionbar;
@@ -57,11 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RouterInjector.inject(this);
-//        if (getIntent().hasExtra("desc")){
-//            desc = getIntent().getStringExtra("desc");
-//        }
-
-
+//        new MainActivity_RouterInjecting<MainActivity>(this);
         initView();
     }
 
@@ -140,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

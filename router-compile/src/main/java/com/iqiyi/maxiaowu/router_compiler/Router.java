@@ -8,10 +8,11 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
-import com.example.router.IntentParam;
-import com.example.router.RouteUri;
-import com.example.router.UriParam;
+import com.example.annotation.IntentParam;
+import com.example.annotation.RouteUri;
+import com.example.annotation.UriParam;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
@@ -59,9 +60,11 @@ public class Router {
                                 mapIntentParam.put(((IntentParam) paramAnnotation).value(),args[i]);
 
                             }else if (paramAnnotation instanceof UriParam){
-                                builder.append(position == 0 ? "?":"&").append(((UriParam) paramAnnotation).value())
-                                        .append("=").append(args[i]);
-                                position++;
+                                if (!TextUtils.isEmpty(((UriParam) paramAnnotation).value())){
+                                    builder.append(position == 0 ? "?":"&").append(((UriParam) paramAnnotation).value())
+                                            .append("=").append(args[i]);
+                                    position++;
+                                }
 
                             }
                         }

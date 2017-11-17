@@ -27,7 +27,7 @@ public class RouterInjector {
         }
 
         try {
-            return constructor.newInstance();
+            return constructor.newInstance(target);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

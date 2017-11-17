@@ -1,4 +1,4 @@
-package com.example.inject;
+package com.example.entity;
 
 import java.lang.annotation.Annotation;
 
@@ -8,20 +8,20 @@ import javax.lang.model.type.TypeMirror;
  * Created by matingting on 2017/11/12.
  */
 
-class FieldInJectedEntity {
+public class FieldInJectedEntity {
 
     private String name;
 
-    private String paramKet;
+    private String paramKey;
 
     private Class<? extends Annotation> annotationClass;
 
     private TypeMirror typeMirror;
 
-    public FieldInJectedEntity(String name, String paramKet,
+    public FieldInJectedEntity(String name, String paramKey,
             Class<? extends Annotation> annotationClass, TypeMirror typeMirror) {
         this.name = name;
-        this.paramKet = paramKet;
+        this.paramKey = paramKey;
         this.annotationClass = annotationClass;
         this.typeMirror = typeMirror;
     }
@@ -30,8 +30,8 @@ class FieldInJectedEntity {
         return name;
     }
 
-    public String getParamKet() {
-        return paramKet;
+    public String getParamKey() {
+        return paramKey;
     }
 
     public Class<? extends Annotation> getAnnotationClass() {

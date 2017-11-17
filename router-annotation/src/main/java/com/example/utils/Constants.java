@@ -1,4 +1,4 @@
-package com.example.inject;
+package com.example.utils;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

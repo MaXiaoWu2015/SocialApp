@@ -1,4 +1,4 @@
-package com.example.router;
+package com.example.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,11 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by maxiaowu on 2017/10/28.
+ * Created by matingting on 2017/10/26.
  */
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface IntentParam {
+public @interface RouteUri {
 
     String value() default "";
 

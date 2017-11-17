@@ -120,7 +120,11 @@ public class CirclePageIndicator extends View implements PageIndicator{
         if (specMode == MeasureSpec.EXACTLY || mViewPager == null){
             result=specSize;
         } else {
-            result= (int) (getPaddingBottom()+getPaddingTop()+mCircleRadius*2);
+           if (mOrientation == HORIZONTAL){
+               result= (int) (getPaddingBottom()+getPaddingTop()+mCircleRadius*2);
+           }else{
+               result = (int) ((getPaddingRight()+getPaddingLeft())+mCircleRadius*2);
+           }
             if (specMode == MeasureSpec.AT_MOST){
                 result=Math.min(result,specSize);
             }
@@ -135,7 +139,12 @@ public class CirclePageIndicator extends View implements PageIndicator{
         if (specMode==MeasureSpec.EXACTLY || mViewPager==null){
             result=specSize;
         }else{
-            result= (int) (getPaddingLeft()+getPaddingRight()+mCount*mCircleRadius*2+(mCount-1)*mCircleMargin);
+
+           if (mOrientation == HORIZONTAL){
+               result= (int) (getPaddingLeft()+getPaddingRight()+mCount*mCircleRadius*2+(mCount-1)*mCircleMargin);
+           }else {
+               result = (int) (getPaddingBottom()+getPaddingRight()+mCount*mCircleRadius*2+(mCount-1)*mCircleMargin);
+           }
 
             if (specMode==MeasureSpec.AT_MOST){
                 result=Math.min(result,specSize);
