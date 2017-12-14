@@ -2,6 +2,10 @@ package com.example.maxiaowu.societyapp.http;
 
 import android.content.Context;
 
+import com.aqy.matingting.basiclibrary.net.BaseRequest;
+import com.aqy.matingting.basiclibrary.net.IHttpCallback;
+import com.squareup.okhttp.Request;
+
 import java.util.Objects;
 
 /**
@@ -18,8 +22,11 @@ public class HttpUtils {
         return null;
     }
 
-    public static Object getRecomendedContentList(String url,Context context){
-        return null;
+    public static void getRecomendedContentList(String url, Context context, boolean isFromCache, IHttpCallback callback){
+
+        Request.Builder builder = new Request.Builder()
+                .url(url);
+        BaseRequest.sendRequest(context,builder,isFromCache,callback);
     }
 
 }

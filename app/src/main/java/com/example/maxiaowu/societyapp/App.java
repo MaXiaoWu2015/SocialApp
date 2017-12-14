@@ -2,6 +2,7 @@ package com.example.maxiaowu.societyapp;
 
 import android.app.Application;
 
+import com.aqy.matingting.basiclibrary.CommonApp;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
@@ -9,9 +10,13 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  */
 
 public class App extends Application {
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        CommonApp.setApplication(this);
     }
 }

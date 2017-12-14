@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SocialApp.iml" filepath="$PROJECT_DIR$/SocialApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic_library/basic_library.iml" filepath="$PROJECT_DIR$/basic_library/basic_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/router-annotation/router-annotation.iml" filepath="$PROJECT_DIR$/router-annotation/router-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/router-compile/router-compile.iml" filepath="$PROJECT_DIR$/router-compile/router-compile.iml" />
     </modules>

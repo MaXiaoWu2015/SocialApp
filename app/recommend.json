@@ -1,0 +1,1327 @@
+{
+    "result": {
+        "mix_1": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "12月新歌速递",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1512640724124a3249b6d91d34bc607234c0d331c6.jpg",
+                    "type_id": "516513493",
+                    "type": 0,
+                    "title": "新歌抢鲜听",
+                    "tip_type": 0,
+                    "author": "12月新歌速递"
+                },
+                {
+                    "desc": "杨丞琳",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151304563994ae16de8db8a383b62d7b1d945cc015.jpg",
+                    "type_id": "567517327",
+                    "type": 2,
+                    "title": "杨丞琳 再见 青春 极精选",
+                    "tip_type": 0,
+                    "author": "杨丞琳"
+                },
+                {
+                    "desc": "俞思远",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15130517689b84ac2711d6d67ea2b6e46bdea17358.jpg",
+                    "type_id": "567718490",
+                    "type": 2,
+                    "title": "反正死活都一样",
+                    "tip_type": 0,
+                    "author": "俞思远"
+                },
+                {
+                    "desc": "于艺术",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513048877a118f6f86c288f0809c48ba8094adadd.jpg",
+                    "type_id": "567461052",
+                    "type": 2,
+                    "title": "一个人的快乐",
+                    "tip_type": 0,
+                    "author": "于艺术"
+                },
+                {
+                    "desc": "孔令奇",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513049850057e6d25a0b761ce170eec3cf33a52c3.jpg",
+                    "type_id": "567747107",
+                    "type": 2,
+                    "title": "BOSS",
+                    "tip_type": 0,
+                    "author": "孔令奇"
+                },
+                {
+                    "desc": "刘惜君",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1512923477963b854dde1fe67aff082e1d8f57a724.jpg",
+                    "type_id": "567479590",
+                    "type": 2,
+                    "title": "如我",
+                    "tip_type": 0,
+                    "author": "刘惜君"
+                }
+            ]
+        },
+        "mod_29": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513059941d9a6509ef7e63427815d7a17abf08ee7.jpg",
+                    "type_id": "http://music.baidu.com/cms/webview/celebrity_list/v1/",
+                    "type": 4,
+                    "title": "U榜",
+                    "tip_type": 0,
+                    "author": ""
+                }
+            ]
+        },
+        "show_list": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "type": "learn",
+                    "picture": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_2b983ddd40a431e1b66a6cb290f0a770.jpg",
+                    "picture_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_2bc81ed7070a7db830a9c8309080d2f4.jpg",
+                    "web_url": "http://music.baidu.com/cms/webview/ktv_activity/20170112/"
+                }
+            ]
+        },
+        "mix_9": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1511927862a14680f5a7d1139558b6e708915a8c74.jpg",
+                    "type_id": "http://music.baidu.com/cms/webview/ticket2017/index.html",
+                    "type": 4,
+                    "title": "开通月会员抢嘻哈全明星歌会门票",
+                    "tip_type": 0,
+                    "author": ""
+                },
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15063232841af034b07245d145838635b02b2e99ad.jpg",
+                    "type_id": "http://y.baidu.com/cms/topic/webapp/2017/dayunhe/index.html",
+                    "type": 4,
+                    "title": "大运河之歌征集活动报名开启",
+                    "tip_type": 0,
+                    "author": ""
+                },
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1509439986632f625366bbf6d00cbf66558a905444.jpg",
+                    "type_id": "http://y.baidu.com/project/detail/204",
+                    "type": 4,
+                    "title": "杀手锏《伍》实体专辑及周边预售",
+                    "tip_type": 0,
+                    "author": ""
+                }
+            ]
+        },
+        "mix_22": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "于艺术",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151305722661905de1718e27b5fde6e7424059ff58.jpg",
+                    "type_id": "567461052",
+                    "type": 2,
+                    "title": "一个人的快乐",
+                    "tip_type": 0,
+                    "author": "于艺术"
+                },
+                {
+                    "desc": "一菲",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513057281100fce99f68999d127c0fe506299977f.jpg",
+                    "type_id": "567461058",
+                    "type": 2,
+                    "title": "我们说好的",
+                    "tip_type": 0,
+                    "author": "一菲"
+                },
+                {
+                    "desc": "陈梦晗",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15127166139f0aafc471be1dc1cd3fd6b04f668b0c.jpg",
+                    "type_id": "567249395",
+                    "type": 2,
+                    "title": "我是你的小情歌",
+                    "tip_type": 0,
+                    "author": "陈梦晗"
+                }
+            ]
+        },
+        "mix_29": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15129695971ed349d30d8d200152d8ba3e83874a71.jpg",
+                    "type_id": "551447667",
+                    "type": 2,
+                    "title": "沉迷于红发小妖精无法自拔",
+                    "tip_type": 0,
+                    "author": ""
+                },
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15129695442f1270e47a5175b3e2190cfa17344f67.jpg",
+                    "type_id": "559567064",
+                    "type": 2,
+                    "title": "90后伦敦天才唱作人",
+                    "tip_type": 0,
+                    "author": ""
+                },
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1512719531b4362f0ef1f13ddf7f1a5ae5871eddf3.jpg",
+                    "type_id": "312402834",
+                    "type": 2,
+                    "title": "足以代表澳洲摇滚的佳作",
+                    "tip_type": 0,
+                    "author": ""
+                }
+            ]
+        },
+        "entry": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "day": "",
+                    "icon": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_14639875926652ed7c4988517cab87526f15d8f359.jpg",
+                    "title": "歌手",
+                    "jump": "2"
+                },
+                {
+                    "day": "",
+                    "icon": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_146398764316d87d01865b91f90a598777b1569fdf.jpg",
+                    "title": "歌曲分类",
+                    "jump": "1"
+                },
+                {
+                    "day": "12",
+                    "icon": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1463987629793f4361391282bde14d9b19156cfac3.jpg",
+                    "title": "今日推荐歌曲",
+                    "jump": "0"
+                }
+            ]
+        },
+        "new_song": {
+            "error_code": 22000,
+            "result": {
+                "pic_500": "http://b.hiphotos.baidu.com/ting/pic/item/a50f4bfbfbedab64bcae572ef136afc378311e7b.jpg",
+                "listid": "5126",
+                "song_info": [
+                    {
+                        "song_id": "261812117",
+                        "pic_premium": "http://qukufile2.qianqian.com/data2/pic/261811991/261811991.jpg@s_0,w_500",
+                        "title": "二十四小时",
+                        "author": "陈坤,韩庚,大鹏,吴磊,尹正"
+                    },
+                    {
+                        "song_id": "74109283",
+                        "title": "灵主不悔《画江湖之灵主》手游暨动漫主题曲",
+                        "author": "汪苏泷"
+                    },
+                    {
+                        "song_id": "261496612",
+                        "pic_premium": "http://qukufile2.qianqian.com/data2/pic/07a830e962bbb4e58e29842f45d44b66/261496583/261496583.jpg@s_0,w_500",
+                        "title": "Protocole",
+                        "author": "Alpha Wann"
+                    }
+                ]
+            }
+        },
+        "focus": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "is_publish": "111111",
+                    "code": "http://music.baidu.com/h5pc/spec_detail?id=847&columnid=96",
+                    "type": 6,
+                    "randpic_desc": "",
+                    "mo_type": 4,
+                    "randpic_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151272869475d2f9c28301dbb8dd0383fb174b6062.jpg",
+                    "randpic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151272869475d2f9c28301dbb8dd0383fb174b6062.jpg"
+                },
+                {
+                    "is_publish": "111111",
+                    "code": "567517327",
+                    "type": 2,
+                    "randpic_desc": "",
+                    "mo_type": 2,
+                    "randpic_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15130454396c6e01b3d3d21d1131b9f35d6088fc6b.jpg",
+                    "randpic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15130454396c6e01b3d3d21d1131b9f35d6088fc6b.jpg"
+                },
+                {
+                    "is_publish": "111111",
+                    "code": "http://music.baidu.com/h5pc/spec_detail?id=848&columnid=86",
+                    "type": 6,
+                    "randpic_desc": "",
+                    "mo_type": 4,
+                    "randpic_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15127070034c0c60ac4c0c9a9f8d0455abea7ab98e.jpg",
+                    "randpic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_15127070034c0c60ac4c0c9a9f8d0455abea7ab98e.jpg"
+                },
+                {
+                    "is_publish": "111111",
+                    "code": "567747107",
+                    "type": 2,
+                    "randpic_desc": "",
+                    "mo_type": 2,
+                    "randpic_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513054063f1355e0a8bd65e05ea4a157c3db31d0a.jpg",
+                    "randpic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1513054063f1355e0a8bd65e05ea4a157c3db31d0a.jpg"
+                },
+                {
+                    "is_publish": "111111",
+                    "code": "567479590",
+                    "type": 2,
+                    "randpic_desc": "",
+                    "mo_type": 2,
+                    "randpic_iphone6": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151292332131de11d7bbb97529accee988f29b9552.jpg",
+                    "randpic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_151292332131de11d7bbb97529accee988f29b9552.jpg"
+                }
+            ]
+        },
+        "diy": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "position": 1,
+                    "tag": "华语,流行,伤感",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/998a49b707f0f1a3ba21009fb2abba3d.jpg",
+                    "title": "最懂女人心，姚谦的情歌味道",
+                    "collectnum": 390,
+                    "type": "gedan",
+                    "listenum": 121890,
+                    "listid": "365643426"
+                },
+                {
+                    "position": 2,
+                    "tag": "华语,流行,安静",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/b314ab389a0f9bb11b7788f9386658f4.jpg",
+                    "title": "那时青春年少，时光正好",
+                    "collectnum": 7,
+                    "type": "gedan",
+                    "listenum": 3607,
+                    "listid": "516599038"
+                },
+                {
+                    "position": 3,
+                    "tag": "华语,网络歌曲",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/c7d4df9a1114fde7ad4bd112dd767335.jpg",
+                    "title": "离开悲伤，又将去往何方",
+                    "collectnum": 7,
+                    "type": "gedan",
+                    "listenum": 2425,
+                    "listid": "516599420"
+                },
+                {
+                    "position": 4,
+                    "tag": "欧美,流行",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/53282fcc2e00ca790cef672eb4da438d.jpg",
+                    "title": "一听就上瘾的惊艳女声",
+                    "collectnum": 29,
+                    "type": "gedan",
+                    "listenum": 4652,
+                    "listid": "516599296"
+                },
+                {
+                    "position": 5,
+                    "tag": "华语,古风,思念",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/7d221953ceb2d2ef13e5b3e586c1e1a4.jpg",
+                    "title": "剪瘦一弯冷月，细数跃然于眼",
+                    "collectnum": 15,
+                    "type": "gedan",
+                    "listenum": 1168,
+                    "listid": "516604876"
+                },
+                {
+                    "position": 6,
+                    "tag": "韩语,流行,清新",
+                    "songidlist": [],
+                    "pic": "http://musicugc.cdn.qianqian.com/ugcdiy/pic/ea865aa7f7857d02feac3a10dc806ddc.jpg",
+                    "title": "每首都有中毒旋律的韩语歌曲",
+                    "collectnum": 21,
+                    "type": "gedan",
+                    "listenum": 6876,
+                    "listid": "515831026"
+                }
+            ]
+        },
+        "recsong": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/5dd1ba70bb3e2d9d7fc79cd614130c8c/93104033/93104033.jpg@s_1,w_500,h_500",
+                    "album_id": "93104033",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "华宇世博音乐文化（北京）有限公司-普通代理 ",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "意外",
+                    "method": "4",
+                    "title": "丑八怪",
+                    "song_id": "87967607",
+                    "author": "薛之谦",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/4a2cffbaf32b0a7cb77986bc483e8642/566599925/566599925.JPG",
+                    "album_id": "566599927",
+                    "biaoshi": "",
+                    "si_proxycompany": "北京唱吧科技股份有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "唱吧精选集3",
+                    "method": "4",
+                    "title": "消愁(Cover 毛不易)",
+                    "song_id": "566603996",
+                    "author": "平安保险",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/247910598/247910598.jpg@s_0,w_500",
+                    "album_id": "247911669",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "恒大音乐有限公司",
+                    "versions": "影视原声",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "电影《夏洛特烦恼》同名主题曲",
+                    "copy_type": "1",
+                    "album_title": "夏洛特烦恼",
+                    "method": "4",
+                    "title": "夏洛特烦恼",
+                    "song_id": "247911654",
+                    "author": "金志文",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/260368391/260368391.jpg@s_0,w_500",
+                    "album_id": "260368616",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "北京聚星天下国际演艺经纪有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "电影《万万没想到：西游篇》片尾曲",
+                    "copy_type": "1",
+                    "album_title": "万万没想到 电影原声带",
+                    "method": "4",
+                    "title": "大王叫我来巡山",
+                    "song_id": "257535276",
+                    "author": "贾乃亮,甜馨",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/e5564b66e5a9c58d70929f6e2bb5d379/261964093/261964093.jpg",
+                    "album_id": "14491881",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "恒大音乐有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "这一切没有想象的那么糟",
+                    "method": "4",
+                    "title": "这一切没有想象的那么糟",
+                    "song_id": "14492580",
+                    "author": "万晓利",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "1",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/67911a620f6baa79f8cd077726a30554/194884/194884.jpg@s_1,w_500,h_500",
+                    "album_id": "194884",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "滚石国际音乐股份有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "电视剧《红蜘蛛》插曲,电视剧《马文的战争》片尾曲",
+                    "copy_type": "1",
+                    "album_title": "让我欢喜让我忧",
+                    "method": "4",
+                    "title": "让我欢喜让我忧",
+                    "song_id": "1250574",
+                    "author": "周华健",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/c332fd35c03ea8047e5471e1725af32b/261958736/261958736.jpg@s_0,w_500",
+                    "album_id": "137407102",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "北京乐享天承文化传媒有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "最炫小苹果",
+                    "method": "4",
+                    "title": "最炫小苹果",
+                    "song_id": "137406983",
+                    "author": "凤凰传奇,筷子兄弟",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/88555531/88555531.jpg@s_0,w_500",
+                    "album_id": "186782",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "滚石国际音乐股份有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "彩虹-羽泉（欢乐的情歌）",
+                    "copy_type": "1",
+                    "album_title": "冷酷到底",
+                    "method": "4",
+                    "title": "彩虹",
+                    "song_id": "976984",
+                    "author": "羽泉",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/259726434/259726434.jpg@s_1,w_500,h_500",
+                    "album_id": "259727050",
+                    "biaoshi": "",
+                    "si_proxycompany": "深圳凤凰涅盘文化传媒有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "亲爱的别想我",
+                    "method": "4",
+                    "title": "亲爱的别想我",
+                    "song_id": "259727051",
+                    "author": "祁隆,苏月",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/9c90b18cc016066f667969762474a08e/264913154/264913154.jpg@s_0,w_500",
+                    "album_id": "182864",
+                    "biaoshi": "vip,lossless",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "黄金十载全精选",
+                    "method": "4",
+                    "title": "有多少爱可以重来",
+                    "song_id": "412776",
+                    "author": "迪克牛仔",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/ce3f32d5223cd1c2400dac80dd6568e8/545459403/545459403.jpg@s_0,w_500",
+                    "album_id": "545459402",
+                    "biaoshi": "vip",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "Jungle Rules",
+                    "method": "4",
+                    "title": "Unforgettable",
+                    "song_id": "545459425",
+                    "author": "French Montana",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/3354ca69b56f3fb571cff0360a5d74f3/557335383/557335383.jpg@s_1,w_500,h_500",
+                    "album_id": "61879",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "华宇世博音乐文化（北京）有限公司-太合麦田 ",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "那一年",
+                    "method": "4",
+                    "title": "那一年",
+                    "song_id": "247696",
+                    "author": "许巍",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/music/B73A829981218664EA413C406BC182BE/255088842/255088842.jpg@s_0,w_500",
+                    "album_id": "242194211",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "华宇世博音乐文化（北京）有限公司-海蝶音乐 ",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "年轮",
+                    "method": "4",
+                    "title": "年轮（电视剧《花千骨》插曲）",
+                    "song_id": "242194209",
+                    "author": "张碧晨",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/5ebbc410b8a31ce4d5f7e3c7ba885013/1002022/1002022.jpg@s_1,w_500,h_500",
+                    "album_id": "1002022",
+                    "biaoshi": "",
+                    "si_proxycompany": "华宇世博音乐文化（北京）有限公司-太合麦田 ",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "红星一号",
+                    "method": "4",
+                    "title": "执着",
+                    "song_id": "2097935",
+                    "author": "田震",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0100000000,0100000000,0100000000,0100000000,0100000000,0100000000,0100000000,0100000000,0100000000,0100000000",
+                    "has_filmtv": "0",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/9bccb4a087d78d96443a50e42a1ac7e3/271832020/271832020.jpg@s_0,w_500",
+                    "album_id": "271832019",
+                    "biaoshi": "lossless",
+                    "si_proxycompany": "霍尔果斯青春光线影业有限公司",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "电影《从你的全世界路过》主题曲",
+                    "copy_type": "3",
+                    "album_title": "你在终点等我",
+                    "method": "4",
+                    "title": "你在终点等我",
+                    "song_id": "271832017",
+                    "author": "王菲",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "1",
+                    "pic_premium": "http://musicdata.baidu.com/data2/music/BDED3A59CADE7B03F41FA7DDAA620C92/252451885/252451885.jpg@s_0,w_500",
+                    "album_id": "7273588",
+                    "biaoshi": "vip,lossless",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "电视剧《浪漫满屋》主题曲",
+                    "copy_type": "1",
+                    "album_title": "如果没有你",
+                    "method": "4",
+                    "title": "如果没有你",
+                    "song_id": "283743",
+                    "author": "莫文蔚",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "1",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/88662604/88662604.jpg@s_0,w_500",
+                    "album_id": "875482",
+                    "biaoshi": "vip,lossless",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "电影《天使之城》主题曲,电影《北京遇上西雅图》插曲",
+                    "copy_type": "1",
+                    "album_title": "Surfacing",
+                    "method": "4",
+                    "title": "Angel",
+                    "song_id": "1328527",
+                    "author": "Sarah McLachlan",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/dbfd13df3c2b47870922c088af488041/543554820/543554820.jpg@s_1,w_500,h_500",
+                    "album_id": "543554820",
+                    "biaoshi": "vip",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "Your Song",
+                    "method": "4",
+                    "title": "Your Song",
+                    "song_id": "543554831",
+                    "author": "Rita Ora",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,1111111111,1111111111,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/30194295ebb09eee7ea78331bfafa204/565540137/565540137.jpg@s_1,w_500,h_500",
+                    "album_id": "565540135",
+                    "biaoshi": "vip,first",
+                    "si_proxycompany": "深圳腾讯计算机系统有限公司索尼音乐",
+                    "versions": "",
+                    "bitrate_fee": "{\"0\":\"129|-1\",\"1\":\"-1|-1\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "好久都没有",
+                    "method": "4",
+                    "title": "好久都没有",
+                    "song_id": "565540156",
+                    "author": "潘美辰",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "0"
+                },
+                {
+                    "resource_type_ext": "0",
+                    "distribution": "0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000,0000000000",
+                    "has_filmtv": "0",
+                    "learn": "0",
+                    "pic_premium": "http://musicdata.baidu.com/data2/pic/1c3c01a80ffa32b72b3e09e6a703a76a/559844151/559844151.JPG@s_1,w_500,h_500",
+                    "album_id": "559845103",
+                    "biaoshi": "first,lossless",
+                    "si_proxycompany": "北京自在天浩文化娱乐有限公司",
+                    "versions": "影视原声",
+                    "bitrate_fee": "{\"0\":\"0|0\",\"1\":\"0|0\"}",
+                    "info": "",
+                    "copy_type": "1",
+                    "album_title": "陌上花开",
+                    "method": "4",
+                    "title": "陌上花开",
+                    "song_id": "559845105",
+                    "author": "谭维维",
+                    "del_status": "0",
+                    "korean_bb_song": "0",
+                    "has_mv_mobile": "1"
+                }
+            ]
+        },
+        "mix_2": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "评论专题就有机会获得免费门票",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1512977074c34c9508ebdf0e23aa261a92c51d5d95.jpg",
+                    "type_id": "http://music.baidu.com/h5pc/spec_detail?id=843&columnid=135",
+                    "type": 4,
+                    "title": "爵士传奇 Louis Hayes 登陆北京！",
+                    "tip_type": 0,
+                    "author": ""
+                }
+            ]
+        },
+        "radio": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "音乐推荐",
+                    "itemid": "13496780",
+                    "title": "有待咖啡",
+                    "album_id": "13420707",
+                    "type": "lebo",
+                    "channelid": "11373552",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_019d01e1e994ba4e9d7890d9fc97f9eb.jpg"
+                },
+                {
+                    "desc": "音乐推荐",
+                    "itemid": "13496374",
+                    "title": "这样的罗大佑，你可能不太熟",
+                    "album_id": "5945591",
+                    "type": "lebo",
+                    "channelid": "11373552",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_7894c83e731b9a8f4954fab18694db81.jpg"
+                },
+                {
+                    "desc": "都市情感",
+                    "itemid": "13472541",
+                    "title": "人生：十二年一个圆满或者缺憾",
+                    "album_id": "12774274",
+                    "type": "lebo",
+                    "channelid": "11373553",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_01273c7cc2c630d44cbfd62d42a4c805.jpg"
+                },
+                {
+                    "desc": "段子笑话",
+                    "itemid": "13497641",
+                    "title": "胖友说，留言前100名让我带大家去吃小龙虾",
+                    "album_id": "12380502",
+                    "type": "lebo",
+                    "channelid": "11373552",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_df5523f3cfd5a3266d669e085b5f1a5a.jpg"
+                },
+                {
+                    "desc": "音乐推荐",
+                    "itemid": "13484227",
+                    "title": "罗大佑丨光阴带走青春，留下了故事",
+                    "album_id": "13384406",
+                    "type": "lebo",
+                    "channelid": "11373552",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1e1f1cd57cd27d41a4d7eba22deb94ea.jpg"
+                },
+                {
+                    "desc": "教育",
+                    "itemid": "13487126",
+                    "title": "《小学生必背古诗词70+80》20：九月九日忆山东兄弟",
+                    "album_id": "13483086",
+                    "type": "lebo",
+                    "channelid": "11373555",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_7d8839a780a4d599e245cefcebdd1d70.jpg"
+                }
+            ]
+        },
+        "mod_27": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "desc": "",
+                    "pic": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_148393157124b034df1c7c7c849618e9a7aff53d16.jpg",
+                    "type_id": "http://music.baidu.com/mall?from=ios_music_homeHot",
+                    "type": 4,
+                    "title": "百度音乐商城让你“购”开心！",
+                    "tip_type": 0,
+                    "author": ""
+                }
+            ]
+        },
+        "scene": {
+            "result": {
+                "action": [
+                    {
+                        "icon_ios": "http://b.hiphotos.baidu.com/ting/pic/item/a5c27d1ed21b0ef4d176a9aedbc451da80cb3ea7.jpg",
+                        "scene_name": "放松",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/0b7b02087bf40ad1e3996ee0502c11dfa9ecceb0.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "8"
+                    },
+                    {
+                        "icon_ios": "http://b.hiphotos.baidu.com/ting/pic/item/94cad1c8a786c917cd5a64c9cf3d70cf3ac757e0.jpg",
+                        "scene_name": "在路上",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/b999a9014c086e06604a914805087bf40bd1cbd7.jpg",
+                        "scene_model": "2",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "0"
+                    },
+                    {
+                        "icon_ios": "http://a.hiphotos.baidu.com/ting/pic/item/0dd7912397dda144f5a95742b4b7d0a20df48699.jpg",
+                        "scene_name": "咖啡时光",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/b8014a90f603738dc815a721b41bb051f819ec52.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "23"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/b3fb43166d224f4a0e1143e30ff790529922d1b1.jpg",
+                        "scene_name": "一个人",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/f636afc379310a55e4d177f7b04543a98226103f.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "10"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/b90e7bec54e736d15a00bff89d504fc2d562692a.jpg",
+                        "scene_name": "工作",
+                        "bgpic_android": "",
+                        "icon_android": "http://d.hiphotos.baidu.com/ting/pic/item/77c6a7efce1b9d1617f33262f4deb48f8c5464f9.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "12"
+                    }
+                ],
+                "emotion": [
+                    {
+                        "icon_ios": "http://b.hiphotos.baidu.com/ting/pic/item/9d82d158ccbf6c810ea60f18ba3eb13532fa40a8.jpg",
+                        "scene_name": "治愈",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/472309f790529822ffa5a6c0d0ca7bcb0a46d41b.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "37"
+                    },
+                    {
+                        "icon_ios": "http://b.hiphotos.baidu.com/ting/pic/item/a1ec08fa513d26974c932aad53fbb2fb4216d8f9.jpg",
+                        "scene_name": "开心",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/f703738da9773912e4621a62ff198618367ae269.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "38"
+                    },
+                    {
+                        "icon_ios": "http://d.hiphotos.baidu.com/ting/pic/item/3bf33a87e950352a854306f85543fbf2b2118b1b.jpg",
+                        "scene_name": "激动",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/5882b2b7d0a20cf4f1ac61dc71094b36acaf99f1.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "34"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/f703738da9773912590da891fe198618367ae213.jpg",
+                        "scene_name": "愤怒",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/b8389b504fc2d56250c54feee01190ef77c66ce0.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "80"
+                    }
+                ],
+                "operation": [
+                    {
+                        "icon_ios": "http://d.hiphotos.baidu.com/ting/pic/item/c8ea15ce36d3d539961d09c13d87e950352ab08b.jpg",
+                        "scene_name": "舒缓",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/0824ab18972bd40792add5ff7c899e510fb3094d.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "159"
+                    },
+                    {
+                        "icon_ios": "http://d.hiphotos.baidu.com/ting/pic/item/cb8065380cd79123bb1999f9ab345982b3b78045.jpg",
+                        "scene_name": "小清新",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/80cb39dbb6fd526672003a16ac18972bd407368c.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "158"
+                    },
+                    {
+                        "icon_ios": "http://a.hiphotos.baidu.com/ting/pic/item/d01373f082025aaff566d3a4fcedab64034f1a0c.jpg",
+                        "scene_name": "热歌",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/838ba61ea8d3fd1f55b20f55374e251f95ca5f21.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "162"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/bd3eb13533fa828bd727916efb1f4134970a5a32.jpg",
+                        "scene_name": "新歌抢鲜听",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/9213b07eca8065382359a31190dda144ad348204.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "网罗全球最新歌曲",
+                        "bgpic_ios": "",
+                        "scene_id": "33"
+                    },
+                    {
+                        "icon_ios": "http://a.hiphotos.baidu.com/ting/pic/item/4a36acaf2edda3cc469cb5ad07e93901203f92c6.jpg",
+                        "scene_name": "校园歌曲",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/a71ea8d3fd1f4134ed57037c221f95cad1c85e4b.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "160"
+                    },
+                    {
+                        "icon_ios": "http://b.hiphotos.baidu.com/ting/pic/item/18d8bc3eb13533faf2ba9fa3aed3fd1f41345b2a.jpg",
+                        "scene_name": "网络歌曲",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/9922720e0cf3d7ca73313874f51fbe096a63a9e8.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "156"
+                    },
+                    {
+                        "icon_ios": "http://a.hiphotos.baidu.com/ting/pic/item/dbb44aed2e738bd461c6bebca78b87d6267ff95c.jpg",
+                        "scene_name": "情人节",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/63d0f703918fa0ecfe25630f219759ee3c6ddbd6.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "155"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/faedab64034f78f04fd1977e7f310a55b2191c60.jpg",
+                        "scene_name": "古风",
+                        "bgpic_android": "",
+                        "icon_android": "http://c.hiphotos.baidu.com/ting/pic/item/2cf5e0fe9925bc313c5e079a59df8db1cb1370b4.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "157"
+                    },
+                    {
+                        "icon_ios": "http://d.hiphotos.baidu.com/ting/pic/item/c2fdfc039245d6884448bf29a2c27d1ed31b24f0.jpg",
+                        "scene_name": "经典老歌",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/d058ccbf6c81800a68b98f0cb63533fa828b4757.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "161"
+                    }
+                ],
+                "other": [
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/b3b7d0a20cf431ad9bb26ac94d36acaf2fdd98d9.jpg",
+                        "scene_name": "流行",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/a50f4bfbfbedab6443ffd5c3f036afc379311e27.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "48"
+                    },
+                    {
+                        "icon_ios": "http://d.hiphotos.baidu.com/ting/pic/item/377adab44aed2e7364d7a8dc8101a18b87d6fa00.jpg",
+                        "scene_name": "2000年代",
+                        "bgpic_android": "",
+                        "icon_android": "http://b.hiphotos.baidu.com/ting/pic/item/aa64034f78f0f736ec9dd4020d55b319ebc41355.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "71"
+                    },
+                    {
+                        "icon_ios": "http://c.hiphotos.baidu.com/ting/pic/item/b2de9c82d158ccbfe74098ca1fd8bc3eb0354145.jpg",
+                        "scene_name": "国语",
+                        "bgpic_android": "",
+                        "icon_android": "http://a.hiphotos.baidu.com/ting/pic/item/d439b6003af33a87423e9e19c15c10385343b566.jpg",
+                        "scene_model": "1",
+                        "scene_desc": "",
+                        "bgpic_ios": "",
+                        "scene_id": "42"
+                    }
+                ]
+            },
+            "error_code": 22000,
+            "config": [
+                {
+                    "color_other": "",
+                    "play_color": "",
+                    "scene_version": 0,
+                    "desc": "",
+                    "end_time": 0,
+                    "start_time": 0,
+                    "scene_color": "",
+                    "bgpic": "",
+                    "bgpic_special": "",
+                    "button_color": ""
+                }
+            ]
+        },
+        "king": {
+            "error_code": 22000,
+            "result": [
+                {
+                    "pic_big": "http://musicdata.baidu.com/data2/pic/66dd126fb87bb9819246ec36705af762/560095454/560095454.jpg@s_1,w_150,h_150",
+                    "title": "记忆中的你我",
+                    "author": "SNH48"
+                },
+                {
+                    "pic_big": "http://musicdata.baidu.com/data2/pic/415b9461efdf55d870e0b78110625ca0/552847551/552847551.jpg@s_1,w_150,h_150",
+                    "title": "Papillon",
+                    "author": "王嘉尔"
+                },
+                {
+                    "pic_big": "http://musicdata.baidu.com/data2/pic/39d6703110744fa2ba12a0c7b48feef8/552784968/552784968.jpg@s_1,w_150,h_150",
+                    "title": "醉清风",
+                    "author": "SNH48"
+                }
+            ]
+        }
+    },
+    "error_code": 22000,
+    "module": [
+        {
+            "id": "25",
+            "style": 1,
+            "link_url": "",
+            "style_nums": "0",
+            "pos": 1,
+            "title": "焦点图",
+            "key": "focus",
+            "picurl": "",
+            "title_more": "",
+            "nums": 8,
+            "jump": ""
+        },
+        {
+            "id": "19",
+            "style": 13,
+            "link_url": "",
+            "style_nums": "1*4",
+            "pos": 2,
+            "title": "音乐导航",
+            "key": "entry",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1463974498ee916568af45b9417191fe7bcce01619.jpg",
+            "title_more": "更多",
+            "nums": 4,
+            "jump": "0"
+        },
+        {
+            "id": "27",
+            "style": 3,
+            "link_url": "",
+            "style_nums": "0",
+            "pos": 3,
+            "title": "今日热点",
+            "key": "mix_2",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_150599170908d757527df896d28f62e60b3ad4f277.jpg",
+            "title_more": "",
+            "nums": 0,
+            "jump": ""
+        },
+        {
+            "id": "26",
+            "style": 15,
+            "pos": 4,
+            "title": "歌单推荐",
+            "link_url": "",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_146537068808d757527df896d28f62e60b3ad4f277.jpg",
+            "title_more": "更多",
+            "key": "diy",
+            "jump": "3"
+        },
+        {
+            "id": "32",
+            "style": 7,
+            "pos": 5,
+            "title": "广告图片(大)",
+            "link_url": "",
+            "picurl": "",
+            "title_more": "",
+            "key": "ad_big",
+            "jump": ""
+        },
+        {
+            "id": "48",
+            "style": 4,
+            "link_url": "",
+            "style_nums": "0",
+            "pos": 6,
+            "title": "U榜",
+            "key": "mod_29",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1492170671a3defe2c3bdfa60416d432ea01210b30.jpg",
+            "title_more": "",
+            "nums": 0,
+            "jump": ""
+        },
+        {
+            "id": "30",
+            "style": 9,
+            "link_url": "",
+            "style_nums": "0",
+            "pos": 7,
+            "title": "新歌首发",
+            "key": "mix_1",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370722dfa35e762ce6c854d656eac195f7fcd5.jpg",
+            "title_more": "更多",
+            "nums": 0,
+            "jump": "7"
+        },
+        {
+            "id": "49",
+            "style": 8,
+            "pos": 8,
+            "title": "编辑精选",
+            "link_url": "",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_14939806756ab982ce8202f64c683c31c4bbae71b5.jpg",
+            "title_more": "",
+            "key": "mix_29",
+            "jump": ""
+        },
+        {
+            "id": "39",
+            "style": 8,
+            "pos": 9,
+            "title": "热销专辑",
+            "link_url": "",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_146640780395497fb5d1cc59a4cb81580819fbc07b.jpg",
+            "title_more": "",
+            "key": "mix_22",
+            "jump": "24"
+        },
+        {
+            "id": "46",
+            "style": 4,
+            "link_url": "https://jinshuju.net/f/10MzvM",
+            "style_nums": "0",
+            "pos": 10,
+            "title": "原商城固定入口（现产品调查问卷）",
+            "key": "mod_27",
+            "picurl": "",
+            "title_more": "更多",
+            "nums": 0,
+            "jump": "https://jinshuju.net/f/10MzvM"
+        },
+        {
+            "id": "37",
+            "style": 2,
+            "pos": 11,
+            "title": "场景电台",
+            "link_url": "",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370748a3defe2c3bdfa60416d432ea01210b30.jpg",
+            "title_more": "更多",
+            "key": "scene",
+            "jump": "6"
+        },
+        {
+            "id": "29",
+            "style": 10,
+            "pos": 12,
+            "title": "今日推荐歌曲",
+            "link_url": "",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_14653709721f134fb220693dff72cce9f8bae7d1ce.jpg",
+            "title_more": "更多",
+            "key": "recsong",
+            "jump": "0"
+        },
+        {
+            "id": "23",
+            "style": 8,
+            "link_url": "http://music.baidu.com/cms/webview/topic_activity/activity/",
+            "style_nums": "0",
+            "pos": 13,
+            "title": "音乐活动",
+            "key": "mix_9",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_1465370987dc19b57e5ee3cb4c5c705aeca66d6dab.jpg",
+            "title_more": "更多",
+            "nums": 0,
+            "jump": 25
+        },
+        {
+            "id": "21",
+            "style": 14,
+            "link_url": "",
+            "style_nums": "0",
+            "pos": 14,
+            "title": "乐播节目",
+            "key": "radio",
+            "picurl": "http://business.cdn.qianqian.com/qianqian/pic/bos_client_146537101814c89604b4945401f5fc52b9fa2d6ea6.jpg",
+            "title_more": "更多",
+            "nums": 0,
+            "jump": "5"
+        },
+        {
+            "id": "31",
+            "style": 6,
+            "pos": 15,
+            "title": "广告图片(小)",
+            "link_url": "",
+            "picurl": "",
+            "title_more": "",
+            "key": "ad_small",
+            "jump": ""
+        }
+    ]
+}
