@@ -1,7 +1,6 @@
 package com.example.maxiaowu.societyapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +45,14 @@ public class RecommendSongListAdapter extends RecommendBaseAdapter<RecommendSong
     }
 
     //FIXME:继承有泛型的基类？？？
-    class RecommendSongListHolder extends RecommendBaseItemHolder<RecommendSongListEntity> {
+    class RecommendSongListHolder extends RecommendBaseAdapter.RecommendBaseItemHolder<RecommendSongListEntity> {
         public RecommendSongListHolder(View itemView) {
             super(itemView);
+        }
+
+        @Override
+        public void setData2View(Object item, Context mContext) {
+
         }
 
 
