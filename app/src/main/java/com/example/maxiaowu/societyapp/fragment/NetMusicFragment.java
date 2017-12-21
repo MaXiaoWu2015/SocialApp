@@ -31,6 +31,10 @@ public class NetMusicFragment extends Fragment {
             @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.net_music_fragment_layout,container,false);
         ButterKnife.bind(this,view);
+
+        mViewPager = view.findViewById(R.id.vp_net_music);
+        mTabLayout = view.findViewById(R.id.tl_net_music_tabs);
+
         initView();
         return view;
     }

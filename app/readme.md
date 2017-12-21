@@ -10,6 +10,11 @@
         必需紧挨startActivity()或者finish()函数之后调用仅仅android2.0以及以上版本上适用
     5.Matrix相关函数详解:http://blog.csdn.net/cquwentao/article/details/51445269
     6.两个手势检测器  GestureDetector
+    7.新曲Fragment,推荐模块,动态添加View
+            1)LayoutInflater.from(context).inflate 加载布局   三个不同参数的重载的区别
+            2)ViewGroup.addView(View,LayoutParams)源码实现----->引申出:为什么不能在draw相关方法中调用addView or removeView  ??????
+
+
 #### 遗留问题
         1.Android 5.0以上实现Activity转场动画新方式
         2.MagicaSakura Android多主题框架

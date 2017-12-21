@@ -4,7 +4,7 @@
     package="com.example.maxiaowu.societyapp">
 
     <uses-sdk tools:overrideLibrary="com.bilibili.magicasakura" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".App"
         android:allowBackup="true"

@@ -17,9 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class RecommendEntity {
 
-    private ArrayList<RecommendSongListEntity> songListEntities;
-    private ArrayList<RecommendNewAlbumEntity> newAlbumEntities;
-    private ArrayList<RecommendRadioEntity> radioEntities;
+    private ArrayList<RecommendSongListEntity> songListEntities = new ArrayList<>();
+    private ArrayList<RecommendNewAlbumEntity> newAlbumEntities = new ArrayList<>();
+    private ArrayList<RecommendRadioEntity> radioEntities = new ArrayList<>();
 
 
     public  RecommendEntity parse(String json){
@@ -52,11 +52,12 @@ public class RecommendEntity {
         return this;
     }
 
-    private void iterateJsonArray(JSONArray jsonArray,ArrayList list,Class clazz) throws JSONException {
+    //不能再函数中对list进行初始化,因为Java引用的传递知识将地址赋值给了函数的参数,在函数中初始化只是将参数的引用指向了对象,并未修改传入的引用的值
+    private <T> void  iterateJsonArray(JSONArray jsonArray,ArrayList<T> list,Class clazz) throws JSONException {
         if (jsonArray!=null){
-            list = new ArrayList();
+//            list = new ArrayList();
             for (int i=0;i<jsonArray.length();i++){
-                list.add(GsonUtils.string2Object(jsonArray.getString(i),clazz));
+                list.add((T) GsonUtils.string2Object(jsonArray.getString(i),clazz));
             }
         }
     }

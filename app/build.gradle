@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion "$rootProject.buildToolsVersion"
     defaultConfig {
         applicationId "com.example.maxiaowu.societyapp"
-        minSdkVersion 19
-        targetSdkVersion 25
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -25,16 +25,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     //    compile 'com.google.guava:guava:21.0'
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.facebook.fresco:fresco:1.3.0'
-    compile 'com.bilibili:magicasakura:0.1.5@aar'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    compile 'com.android.support:design:25.2.0'
-    compile 'org.robolectric:shadows-multidex:3.3.2'
-    //    compile 'com.google.guava:guava:22.0-android'
-    testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile project(path: ':router-annotation')
     compile project(path: ':router-compile')
     compile project(':basic_library')

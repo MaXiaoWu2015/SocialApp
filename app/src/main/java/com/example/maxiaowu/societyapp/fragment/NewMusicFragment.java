@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,12 +20,17 @@ import android.widget.TextView;
 import com.aqy.matingting.basiclibrary.base.BaseFragment;
 import com.aqy.matingting.basiclibrary.net.IHttpCallback;
 import com.aqy.matingting.basiclibrary.net.Urls;
+import com.aqy.matingting.basiclibrary.ui.GridSpacingItemDecoration;
 import com.aqy.matingting.basiclibrary.utils.CollectionUtils;
 import com.aqy.matingting.basiclibrary.utils.Cons;
 import com.aqy.matingting.basiclibrary.utils.NetWorkUtils;
 import com.bilibili.magicasakura.widgets.TintButton;
+import com.bilibili.magicasakura.widgets.TintImageView;
 import com.bilibili.magicasakura.widgets.TintTextView;
 import com.example.maxiaowu.societyapp.R;
+import com.example.maxiaowu.societyapp.adapter.RecommendNewAlbumAdapter;
+import com.example.maxiaowu.societyapp.adapter.RecommendRadioAdapter;
+import com.example.maxiaowu.societyapp.adapter.RecommendSongListAdapter;
 import com.example.maxiaowu.societyapp.entity.RecommendBaseEntity;
 import com.example.maxiaowu.societyapp.entity.RecommendEntity;
 import com.example.maxiaowu.societyapp.http.HttpUtils;
@@ -49,7 +57,7 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
     public TintButton tb_private_FM;
 
     @BindView(R.id.tt_recommend_count)
-    public TintButton tt_recommend_count;
+    public TintTextView tt_recommend_count;
 
     @BindView(R.id.fl_recommend_daily)
     public FrameLayout fl_recommend_daily;
@@ -89,7 +97,14 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initView() {
-
+        //TODO:因为ButterKnife在AS3.0不能使用,所以暂时先通过老方法获取
+        loop_pic_view = rootView.findViewById(R.id.loop_pic_view);
+        tb_private_FM = rootView.findViewById(R.id.tb_private_FM);
+        tt_recommend_count = rootView.findViewById(R.id.tt_recommend_count);
+        fl_recommend_daily = rootView.findViewById(R.id.fl_recommend_daily);
+        tb_new_music_rank = rootView.findViewById(R.id.tb_new_music_rank);
+        change_item_position = rootView.findViewById(R.id.change_item_position);
+        ll_recommend_content = rootView.findViewById(R.id.ll_recommend_content);
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -138,13 +153,27 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
     private void updateRecommendUI() {
         if (recommendEntity!=null){
             if (!CollectionUtils.isEmpty(recommendEntity.getSongListEntities())){
-                recommendSongListLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,ll_recommend_content);
+                recommendSongListLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
+//                ((ViewGroup)ll_recommend_content.getParent()).removeView(recommendSongListLayout);
+                ll_recommend_content.addView(recommendSongListLayout,0);
                 RecommendHolder songListHolder = new RecommendHolder(recommendSongListLayout);
-                songListHolder.setData2View(Cons.SONG_LIST,);
+                songListHolder.setData2View(R.string.recommend_song_list_title,Cons.SONG_LIST,new RecommendSongListAdapter(mActivity,recommendEntity.getSongListEntities()));
             }
 
-            recommendNewAlbumLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,ll_recommend_content);
-            recommendRadioLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,ll_recommend_content);
+            if (!CollectionUtils.isEmpty(recommendEntity.getNewAlbumEntities())){
+                recommendNewAlbumLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
+                ll_recommend_content.addView(recommendNewAlbumLayout,1);
+                RecommendHolder newAlbumHolder = new RecommendHolder(recommendNewAlbumLayout);
+                newAlbumHolder.setData2View(R.string.recommend_new_album_title,Cons.NEW_ALBUM,new RecommendNewAlbumAdapter(mActivity,recommendEntity.getNewAlbumEntities()));
+            }
+
+            if (!CollectionUtils.isEmpty(recommendEntity.getRadioEntities())){
+                recommendRadioLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
+                ll_recommend_content.addView(recommendRadioLayout,2);
+                RecommendHolder radioHolder = new RecommendHolder(recommendRadioLayout);
+                radioHolder.setData2View(R.string.recommend_radio_title,Cons.RADIO,new RecommendRadioAdapter(mActivity,recommendEntity.getRadioEntities()));
+            }
+
         }
 
 
@@ -167,6 +196,8 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
 
     class RecommendHolder{
 
+        TintImageView tintImageView;
+
         @BindView(R.id.tv_recommend_title)
         TextView recommendTitle;
 
@@ -177,15 +208,38 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
         RecyclerView recommendList;
 
         public RecommendHolder(View itemView) {
-            ButterKnife.bind(itemView);
+//            ButterKnife.bind(itemView);
+
+            recommendTitle = itemView.findViewById(R.id.tv_recommend_title);
+            recommendMore = itemView.findViewById(R.id.recommend_more);
+            recommendList = itemView.findViewById(R.id.rv_recommend_list);
+            tintImageView = itemView.findViewById(R.id.ti_recommend_icon);
+
         }
 
-        public void setData2View(String title,int type, RecyclerView.Adapter adapter){
-            recommendTitle.setText(title);
-            if (type == Cons.SONG_LIST){
-                recommendMore.setVisibility(View.VISIBLE);
+        public void setData2View(@StringRes int titleId, int type, RecyclerView.Adapter adapter){
+            recommendTitle.setText(mActivity.getString(titleId));
+
+            switch (type){
+                case Cons.SONG_LIST:
+                    recommendMore.setVisibility(View.VISIBLE);
+                    tintImageView.setBackgroundResource(R.mipmap.recommend_playlist);
+                    break;
+                case Cons.NEW_ALBUM:
+                    tintImageView.setBackgroundResource(R.mipmap.recommend_newest);
+                    break;
+                case Cons.RADIO:
+                    tintImageView.setBackgroundResource(R.mipmap.recommend_radio);
+                    break;
             }
+
+
+            //之前item布局的高度设置了match_parent,出现了一页只显示一行的情况,将高度改为wrap_content就可以了
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity,3);
+            recommendList.setLayoutManager(gridLayoutManager);
+            recommendList.addItemDecoration(new GridSpacingItemDecoration(3,20,true,true));
             recommendList.setAdapter(adapter);
+
         }
 
 

@@ -1,39 +1,33 @@
 package com.example.maxiaowu.societyapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.aqy.matingting.basiclibrary.base.BaseAdapter;
 import com.example.maxiaowu.societyapp.R;
-import com.example.maxiaowu.societyapp.adapter.viewholder.BaseViewHolder;
+import com.aqy.matingting.basiclibrary.base.BaseViewHolder;
 import com.example.maxiaowu.societyapp.entity.RecommendBaseEntity;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public abstract class RecommendBaseAdapter<T extends RecommendBaseAdapter.RecommendBaseItemHolder> extends RecyclerView.Adapter<T>{
+public abstract class RecommendBaseAdapter<K extends RecommendBaseEntity,T extends RecommendBaseAdapter.RecommendBaseItemHolder> extends BaseAdapter<K,T> {
     
-    protected Context mContext;
-    
-    public RecommendBaseAdapter(Context mContext) {
-        this.mContext = mContext;
-    }
 
-
-    @Override
-    public T onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public RecommendBaseAdapter(Context mContext, List<K> data) {
+        super(mContext,data);
     }
 
     @Override
-    public void onBindViewHolder(T holder, int position) {
-
+    public int getResLayoutId(int type) {
+        return R.layout.recommend_list_single_item;
     }
 
-    public abstract   class RecommendBaseItemHolder<K extends RecommendBaseEntity> extends BaseViewHolder<K>{
+    public abstract  class RecommendBaseItemHolder<T> extends BaseViewHolder<T>{
 
           @BindView(R.id.sd_recommend_list_single_item_poster)
           public SimpleDraweeView sd_recommend_list_single_item_poster;
@@ -49,7 +43,13 @@ public abstract class RecommendBaseAdapter<T extends RecommendBaseAdapter.Recomm
 
           public RecommendBaseItemHolder(View itemView) {
               super(itemView);
-              ButterKnife.bind(itemView);
+//              ButterKnife.bind(itemView);
+
+              sd_recommend_list_single_item_poster = itemView.findViewById(R.id.sd_recommend_list_single_item_poster);
+              tv_recommend_list_single_item_desc = itemView.findViewById(R.id.tv_recommend_list_single_item_desc);
+              tv_recommend_list_single_item_category = itemView.findViewById(R.id.tv_recommend_list_single_item_category);
+              tv_recommend_list_single_item_count = itemView.findViewById(R.id.tv_recommend_list_single_item_count);
+
           }
 
     }

@@ -1,6 +1,8 @@
 package com.example.maxiaowu.societyapp.widgets.autoscrollviewpager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.aqy.matingting.basiclibrary.R2;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.RecyclingPagerAdapter;
 import com.example.maxiaowu.societyapp.http.HttpUtils;
@@ -76,6 +79,9 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mContext=context;
         inflate(mContext,R.layout.infinite_indicator_layout,this);
         ButterKnife.bind(this);
+        mViewPager = findViewById(R.id.vp_img);
+        mPageIndicators = findViewById(R.id.cpi_for_img);
+
         initData();
         mViewPager.addOnPageChangeListener(this);
         mPagerAdapter=new RecyclablePagerAdapter(mImagesCount,mContext);
@@ -87,30 +93,31 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void initData(){
-//        mImageUrls=new ArrayList<>(Arrays.asList("http://business.cdn.qianqian.com/qianqian/pic/bos_client_14962159099c2ea0bd507d060f6fdf388edf4d2e99.jpg"
-//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_1495789484dc0b75f81f249fa3479032f2eb662dc4.jpg"
-//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_14957057549566557e02bd868968cc35e7f94083b1.jpg"
-//                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_149587343811606d084cf4dbd7ceec85ebb0b69aa1.jpg"));
+        mImageUrls=new ArrayList<>(Arrays.asList("http://business.cdn.qianqian.com/qianqian/pic/bos_client_14962159099c2ea0bd507d060f6fdf388edf4d2e99.jpg"
+                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_1495789484dc0b75f81f249fa3479032f2eb662dc4.jpg"
+                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_14957057549566557e02bd868968cc35e7f94083b1.jpg"
+                ,"http://business.cdn.qianqian.com/qianqian/pic/bos_client_149587343811606d084cf4dbd7ceec85ebb0b69aa1.jpg"));
 
 
         //TODO:之后替换成RxAndroid
-        new AsyncTask<Void,Void,Void>(){
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                HttpUtils.getRecommendedSliderPics("",mContext,7);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                mImageUrls=new ArrayList<>(Arrays.asList("res://"+mContext.getPackageName() +"/" + R.drawable.first
-                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first1
-                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first2
-                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first3));
-            }
-        };
+//        new AsyncTask<Void,Void,Void>(){
+//
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                HttpUtils.getRecommendedSliderPics("",mContext,7);
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void aVoid) {
+//                mImageUrls=new ArrayList<>(Arrays.asList("res://"+mContext.getPackageName() +"/" + R.drawable.first
+//                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first1
+//                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first2
+//                        ,"res://"+mContext.getPackageName() +"/" + R.drawable.first3));
+//            }
+//        };
     }
 
     @Override
@@ -139,6 +146,10 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mScrollHandler.sendEmptyMessage(MSG_WHAT);
     }
 
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+    }
 
     public void setImagesCount(int imagesCount) {
         mImagesCount = imagesCount;

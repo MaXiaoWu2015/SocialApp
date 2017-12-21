@@ -5,6 +5,8 @@ import android.app.Application;
 import com.aqy.matingting.basiclibrary.CommonApp;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by matingting on 2017/5/2.
  */

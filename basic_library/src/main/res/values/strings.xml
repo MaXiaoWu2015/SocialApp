@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BasicLibrary</string>
+    <string name="recommend_song_list_title">推荐歌单</string>
+    <string name="recommend_new_album_title">新专辑上架</string>
+    <string name="recommend_radio_title">主播电台</string>
 </resources>
