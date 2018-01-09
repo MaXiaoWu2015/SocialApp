@@ -87,7 +87,8 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        rootView=inflater.inflate(R.layout.new_music_frag,container,false);//FIXME:为什么最后一个参数不能设置为true
+        //FIXED:为什么最后一个参数不能设置为true:如果设置为true,那么返回的就是container,container是ViewPager,所以要设置为false
+        rootView=inflater.inflate(R.layout.new_music_frag,container,false);
         ButterKnife.bind(rootView);
         initView();
 
@@ -152,9 +153,13 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
 
     private void updateRecommendUI() {
         if (recommendEntity!=null){
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.topMargin = 30;//1080p 1dp = 3px
+
             if (!CollectionUtils.isEmpty(recommendEntity.getSongListEntities())){
                 recommendSongListLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
 //                ((ViewGroup)ll_recommend_content.getParent()).removeView(recommendSongListLayout);
+                //Fixed:draw()时为什么不能调用addView or removeView;跟addView调用requestLayout()有什么关系;requestlayout与invalidate有什么区别
                 ll_recommend_content.addView(recommendSongListLayout,0);
                 RecommendHolder songListHolder = new RecommendHolder(recommendSongListLayout);
                 songListHolder.setData2View(R.string.recommend_song_list_title,Cons.SONG_LIST,new RecommendSongListAdapter(mActivity,recommendEntity.getSongListEntities()));
@@ -163,6 +168,7 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
             if (!CollectionUtils.isEmpty(recommendEntity.getNewAlbumEntities())){
                 recommendNewAlbumLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
                 ll_recommend_content.addView(recommendNewAlbumLayout,1);
+                recommendNewAlbumLayout.setLayoutParams(params);
                 RecommendHolder newAlbumHolder = new RecommendHolder(recommendNewAlbumLayout);
                 newAlbumHolder.setData2View(R.string.recommend_new_album_title,Cons.NEW_ALBUM,new RecommendNewAlbumAdapter(mActivity,recommendEntity.getNewAlbumEntities()));
             }
@@ -170,6 +176,7 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
             if (!CollectionUtils.isEmpty(recommendEntity.getRadioEntities())){
                 recommendRadioLayout = LayoutInflater.from(mActivity).inflate(R.layout.recommend_list_item,null);
                 ll_recommend_content.addView(recommendRadioLayout,2);
+                recommendRadioLayout.setLayoutParams(params);
                 RecommendHolder radioHolder = new RecommendHolder(recommendRadioLayout);
                 radioHolder.setData2View(R.string.recommend_radio_title,Cons.RADIO,new RecommendRadioAdapter(mActivity,recommendEntity.getRadioEntities()));
             }

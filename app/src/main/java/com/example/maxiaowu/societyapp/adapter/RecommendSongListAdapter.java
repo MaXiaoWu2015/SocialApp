@@ -1,8 +1,14 @@
 package com.example.maxiaowu.societyapp.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +25,17 @@ import java.util.ArrayList;
 
 public class RecommendSongListAdapter extends RecommendBaseAdapter<RecommendSongListEntity,RecommendSongListAdapter.RecommendSongListHolder> {
 
+    private SpannableString spanString;
 
     public RecommendSongListAdapter(Context mContext,ArrayList<RecommendSongListEntity> list) {
         super(mContext,list);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(),R.mipmap.index_icn_earphone);
+        ImageSpan imageSpan = new ImageSpan(mContext,bitmap,ImageSpan.ALIGN_BASELINE);//TODO:SpannableString 了解
+        spanString = new SpannableString("icon ");
+        spanString.setSpan(imageSpan,0,4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+
     }
 
     @Override
@@ -34,10 +48,23 @@ public class RecommendSongListAdapter extends RecommendBaseAdapter<RecommendSong
     @Override
     public void setData2View(RecommendSongListEntity item, RecommendSongListHolder holder) {
         holder.sd_recommend_list_single_item_poster.setImageURI(item.getPic());
-        holder.tv_recommend_list_single_item_count.setText(item.getListenum());
+        holder.tv_recommend_list_single_item_count.setText(spanString);
+        holder.tv_recommend_list_single_item_count.append(dataFormat(item.getListenum()));//TODO:数字格式相关工具类
         holder.tv_recommend_list_single_item_desc.setText(item.getTag());
     }
 
+    private String dataFormat(String listNum){
+        int count = Integer.valueOf(listNum);
+
+        if (count>10000){
+            count = count/10000;
+
+            return count+"万";
+        }
+
+        return listNum;
+
+    }
 
     //RecommendBaseItemHolder如果是有泛型的内部类,那么这样引用RecommendBaseItemHolder
     // 会出现‘type parameter given on a raw type’错误,但是如果不是内部类的化就没问题,可能跟泛型擦除有关

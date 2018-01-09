@@ -19,4 +19,12 @@
         </attr>
         <attr name="circle_center"  format="boolean"/>
     </declare-styleable>
+
+
+    <declare-styleable name="LabelFlowLayout">
+        <attr name="label_max_lines"  format="integer"/>
+        <attr name="label_line_space" format="dimension" />
+        <attr name="label_space" format="dimension" />
+    </declare-styleable>
+
 </resources>
