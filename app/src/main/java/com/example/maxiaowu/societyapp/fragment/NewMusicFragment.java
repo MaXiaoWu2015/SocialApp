@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,19 +29,16 @@ import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.RecommendNewAlbumAdapter;
 import com.example.maxiaowu.societyapp.adapter.RecommendRadioAdapter;
 import com.example.maxiaowu.societyapp.adapter.RecommendSongListAdapter;
-import com.example.maxiaowu.societyapp.entity.RecommendBaseEntity;
 import com.example.maxiaowu.societyapp.entity.RecommendEntity;
 import com.example.maxiaowu.societyapp.http.HttpUtils;
 import com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.InfiniteIndicatorLayout;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by matingting on 2017/4/28.
- * 新曲
+ *
  */
 
 public class NewMusicFragment extends BaseFragment implements View.OnClickListener{
@@ -99,13 +94,13 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
 
     private void initView() {
         //TODO:因为ButterKnife在AS3.0不能使用,所以暂时先通过老方法获取
-        loop_pic_view = rootView.findViewById(R.id.loop_pic_view);
-        tb_private_FM = rootView.findViewById(R.id.tb_private_FM);
-        tt_recommend_count = rootView.findViewById(R.id.tt_recommend_count);
-        fl_recommend_daily = rootView.findViewById(R.id.fl_recommend_daily);
-        tb_new_music_rank = rootView.findViewById(R.id.tb_new_music_rank);
-        change_item_position = rootView.findViewById(R.id.change_item_position);
-        ll_recommend_content = rootView.findViewById(R.id.ll_recommend_content);
+        loop_pic_view = (InfiniteIndicatorLayout) rootView.findViewById(R.id.loop_pic_view);
+        tb_private_FM = (TintButton) rootView.findViewById(R.id.tb_private_FM);
+        tt_recommend_count = (TintTextView) rootView.findViewById(R.id.tt_recommend_count);
+        fl_recommend_daily = (FrameLayout) rootView.findViewById(R.id.fl_recommend_daily);
+        tb_new_music_rank = (TintButton) rootView.findViewById(R.id.tb_new_music_rank);
+        change_item_position = (TintTextView) rootView.findViewById(R.id.change_item_position);
+        ll_recommend_content = (LinearLayout) rootView.findViewById(R.id.ll_recommend_content);
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -217,10 +212,10 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
         public RecommendHolder(View itemView) {
 //            ButterKnife.bind(itemView);
 
-            recommendTitle = itemView.findViewById(R.id.tv_recommend_title);
-            recommendMore = itemView.findViewById(R.id.recommend_more);
-            recommendList = itemView.findViewById(R.id.rv_recommend_list);
-            tintImageView = itemView.findViewById(R.id.ti_recommend_icon);
+            recommendTitle = (TextView) itemView.findViewById(R.id.tv_recommend_title);
+            recommendMore = (TextView) itemView.findViewById(R.id.recommend_more);
+            recommendList = (RecyclerView) itemView.findViewById(R.id.rv_recommend_list);
+            tintImageView = (TintImageView) itemView.findViewById(R.id.ti_recommend_icon);
 
         }
 

@@ -2,7 +2,6 @@ package com.example.maxiaowu.societyapp.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -13,11 +12,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.annotation.RouteUri;
 import com.example.inject.IntentParamInject;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.DrawerLayoutAdpater;
@@ -25,15 +22,11 @@ import com.example.maxiaowu.societyapp.adapter.MainContentViewPagerAdapter;
 import com.example.maxiaowu.societyapp.adapter.model.DrawerLayoutItem;
 import com.example.maxiaowu.societyapp.fragment.MyMusicFragment;
 import com.example.maxiaowu.societyapp.fragment.NetMusicFragment;
+import com.example.maxiaowu.societyapp.utils.SystemUIUtils;
 import com.iqiyi.maxiaowu.router_compiler.RouterInjector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static android.os.Build.VERSION_CODES.KITKAT;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -92,14 +85,15 @@ public class MainActivity extends AppCompatActivity {
 //     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_STABLE} and
 //     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN}.
         //设置状态栏透明，在代码中设置，如果在xml中设置，有些手机可能无法显示
-        getWindow().getDecorView().setSystemUiVisibility(
-                SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        if (Build.VERSION.SDK_INT>=LOLLIPOP){
-            getWindow().setStatusBarColor(Color.TRANSPARENT);  //API5.x以上
-        }else if(Build.VERSION.SDK_INT>=KITKAT){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//API19
-        }
+//        getWindow().getDecorView().setSystemUiVisibility(
+//                SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                        | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        if (Build.VERSION.SDK_INT>=LOLLIPOP){
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);  //API5.x以上
+//        }else if(Build.VERSION.SDK_INT>=KITKAT){
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//API19
+//        }
+
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.tl_toolbar);
         //将toolbar设置为Activity的应用栏后,就可访问Actionbar类提供的方法
@@ -111,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         mActionbar.setDisplayHomeAsUpEnabled(true);//enable the up button
         mActionbar.setHomeAsUpIndicator(R.drawable.ic_menu);//如果不设置图片，则使用主题默认的
         mActionbar.setDisplayShowTitleEnabled(false);
+
+        SystemUIUtils.changeStatusBarColor(this,R.color.themeColor);
     }
 
     private void initLeftMenu() {

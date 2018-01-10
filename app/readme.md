@@ -13,7 +13,7 @@
     7.新曲Fragment,推荐模块,动态添加View
             1)LayoutInflater.from(context).inflate 加载布局   三个不同参数的重载的区别
             2)ViewGroup.addView(View,LayoutParams)源码实现----->引申出:为什么不能在draw相关方法中调用addView or removeView  ??????
-
+    8.spannableString
 
 #### 遗留问题
         1.Android 5.0以上实现Activity转场动画新方式
