@@ -73,27 +73,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-       // setStatusBarColor方法的注释
-// * Sets the color of the status bar to {@code color}.
-//     *
-//     * For this to take effect,
-//     * the window must be drawing the system bar backgrounds with
-//     * {@link android.view.WindowManager.LayoutParams#FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS} and
-//     * {@link android.view.WindowManager.LayoutParams#FLAG_TRANSLUCENT_STATUS} must not be set.
-//     *
-//     * If {@code color} is not opaque, consider setting
-//     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_STABLE} and
-//     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN}.
-        //设置状态栏透明，在代码中设置，如果在xml中设置，有些手机可能无法显示
-//        getWindow().getDecorView().setSystemUiVisibility(
-//                SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        if (Build.VERSION.SDK_INT>=LOLLIPOP){
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);  //API5.x以上
-//        }else if(Build.VERSION.SDK_INT>=KITKAT){
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//API19
-//        }
-
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.tl_toolbar);
         //将toolbar设置为Activity的应用栏后,就可访问Actionbar类提供的方法
@@ -106,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         mActionbar.setHomeAsUpIndicator(R.drawable.ic_menu);//如果不设置图片，则使用主题默认的
         mActionbar.setDisplayShowTitleEnabled(false);
 
-        SystemUIUtils.changeStatusBarColor(this,R.color.themeColor);
+        SystemUIUtils.changeStatusBarColor(this,getResources().getColor(R.color.theme_color_primary));
     }
 
     private void initLeftMenu() {

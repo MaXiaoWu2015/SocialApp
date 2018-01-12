@@ -9,10 +9,10 @@
         
     </style>
 
-    <style name="TranslucentTheme" parent="AppTheme">
+    <!--<style name="TranslucentTheme" parent="AppTheme">-->
 
-        <!--在Android4.4版本-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <!--<item name="android:windowTranslucentNavigation">true</item>-->
-    </style>
+        <!--&lt;!&ndash;在Android4.4版本&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowTranslucentStatus">true</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowTranslucentNavigation">true</item>&ndash;&gt;-->
+    <!--</style>-->
 </resources>

@@ -8,10 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TranslucentTheme" parent="AppTheme">
+    <!--<style name="TranslucentTheme" parent="AppTheme">-->
 
         <!--在Android4.4版本前跟随系统主题-->
-    </style>
+    <!--</style>-->
 
     <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="actionBarItemBackground">@drawable/toolbarItemBackground</item>

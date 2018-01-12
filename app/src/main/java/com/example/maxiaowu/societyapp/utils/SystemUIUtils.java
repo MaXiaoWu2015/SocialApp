@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
@@ -39,11 +40,11 @@ public class SystemUIUtils {
 
         Window window = activity.getWindow();
         ViewGroup contentView =window.findViewById(Window.ID_ANDROID_CONTENT);
-        View childView = contentView.getChildAt(0);
+        final View childView = contentView.getChildAt(0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-
             if (isNeedShadow){
+                //半透明的遮罩阴影
                 window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_VISIBLE);
             }else {
@@ -55,8 +56,8 @@ public class SystemUIUtils {
                 ViewCompat.requestApplyInsets(childView);
             }
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            //渐变的阴影
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
             if (childView != null){
                 ViewCompat.setFitsSystemWindows(childView,false);
             }
@@ -92,7 +93,7 @@ public class SystemUIUtils {
 
 
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            //4.4~5.0  将状态栏设置成透明的,然后add一个高度与状态栏相同背景色为statuscolor的View
+            //4.4~5.0  将状态栏设置成透明的,然后add一个高度与状态栏相同背景色为statuscolor的View  会有渐变的阴影
 
             //1.设置透明flag
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -136,6 +137,19 @@ public class SystemUIUtils {
      * */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private static void setStatusBarColor(Activity activity, int statusColor){
+
+        // setStatusBarColor方法的注释
+// * Sets the color of the status bar to {@code color}.
+//     *
+//     * For this to take effect,
+//     * the window must be drawing the system bar backgrounds with
+//     * {@link android.view.WindowManager.LayoutParams#FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS} and
+//     * {@link android.view.WindowManager.LayoutParams#FLAG_TRANSLUCENT_STATUS} must not be set.
+//     *
+//     * If {@code color} is not opaque, consider setting
+//     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_STABLE} and
+//     * {@link android.view.View#SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN}.
+
         Window window = activity.getWindow();
         //1.清空透明flag
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

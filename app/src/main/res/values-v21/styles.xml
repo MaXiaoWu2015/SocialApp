@@ -9,14 +9,14 @@
         <!--<item name="windowActionBar">false</item>-->
         <!--<item name="android:windowActionModeOverlay">true</item>-->
     </style>
-    <style name="TranslucentTheme" parent="AppTheme">
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <!--<item name="windowActionBar">false</item>-->
-        <!--&lt;!&ndash;&lt;!&ndash;<item name="android:windowTranslucentNavigation">true</item>&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;导航栏背景设置为透明&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;在Android5.x版本开始，要将状态栏颜色设置为透明，否则会显示系统默认的浅灰色&ndash;&gt;&ndash;&gt;-->
-        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
-        <!--&lt;!&ndash;&lt;!&ndash;<item name="android:statusBarColor">#00000000</item>&ndash;&gt;&ndash;&gt;-->
-        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
-    </style>
+    <!--<style name="TranslucentTheme" parent="AppTheme">-->
+        <!--&lt;!&ndash;<item name="android:windowTranslucentStatus">true</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="windowActionBar">false</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<item name="android:windowTranslucentNavigation">true</item>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;导航栏背景设置为透明&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;在Android5.x版本开始，要将状态栏颜色设置为透明，否则会显示系统默认的浅灰色&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowDrawsSystemBarBackgrounds">true</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<item name="android:statusBarColor">#00000000</item>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:statusBarColor">@android:color/transparent</item>&ndash;&gt;-->
+    <!--</style>-->
 </resources>
