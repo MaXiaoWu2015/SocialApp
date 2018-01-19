@@ -1,7 +1,8 @@
 package com.aqy.matingting.basiclibrary.base;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by matingting on 2017/12/12.
@@ -9,11 +10,13 @@ import android.support.v4.app.Fragment;
 
 public class BaseFragment extends Fragment {
 
-    protected Activity mActivity;
+    protected AppCompatActivity mActivity;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mActivity = activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        mActivity = (AppCompatActivity) getActivity();
+
     }
 }

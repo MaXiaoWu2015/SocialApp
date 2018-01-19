@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.aqy.matingting.basiclibrary.base.BaseViewHolder;
 import com.example.maxiaowu.societyapp.entity.RecommendRadioEntity;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class RecommendRadioAdapter extends RecommendBaseAdapter<RecommendRadioEn
 
         public RecommendRadioHolder(View itemView) {
             super(itemView);
+        }
+
+        @Override
+        public void onPosterClick(SimpleDraweeView draweeView) {
+
         }
     }
 }

@@ -8,4 +8,7 @@
     <string name="new_music_private_fm_str">私人FM</string>
     <string name="recommend_music_daily">每日歌曲推荐</string>
     <string name="recommend_new_musci_rank_str">云音乐新歌榜</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

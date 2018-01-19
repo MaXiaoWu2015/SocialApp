@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -246,5 +247,12 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
 
 
     }
+
+
+    public void shareElementSFragmentTransformation(View view, String transitionName, Fragment fragment){
+
+    }
+
+
 
 }

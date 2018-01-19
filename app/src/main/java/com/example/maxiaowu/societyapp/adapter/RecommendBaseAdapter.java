@@ -29,17 +29,17 @@ public abstract class RecommendBaseAdapter<K extends RecommendBaseEntity,T exten
 
     public abstract  class RecommendBaseItemHolder<T> extends BaseViewHolder<T>{
 
-          @BindView(R.id.sd_recommend_list_single_item_poster)
-          public SimpleDraweeView sd_recommend_list_single_item_poster;
+             @BindView(R.id.sd_recommend_list_single_item_poster)
+        public SimpleDraweeView sd_recommend_list_single_item_poster;
 
-          @BindView(R.id.tv_recommend_list_single_item_desc)
-          public TextView tv_recommend_list_single_item_desc;
+        @BindView(R.id.tv_recommend_list_single_item_desc)
+        public TextView tv_recommend_list_single_item_desc;
 
-          @BindView(R.id.tv_recommend_list_single_item_category)
-          public TextView tv_recommend_list_single_item_category;
+        @BindView(R.id.tv_recommend_list_single_item_category)
+        public TextView tv_recommend_list_single_item_category;
 
-          @BindView(R.id.tv_recommend_list_single_item_count)
-          public TextView tv_recommend_list_single_item_count;
+        @BindView(R.id.tv_recommend_list_single_item_count)
+        public TextView tv_recommend_list_single_item_count;
 
           public RecommendBaseItemHolder(View itemView) {
               super(itemView);
@@ -50,7 +50,19 @@ public abstract class RecommendBaseAdapter<K extends RecommendBaseEntity,T exten
               tv_recommend_list_single_item_category = itemView.findViewById(R.id.tv_recommend_list_single_item_category);
               tv_recommend_list_single_item_count = itemView.findViewById(R.id.tv_recommend_list_single_item_count);
 
+
+              sd_recommend_list_single_item_poster.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      onPosterClick((SimpleDraweeView) v);
+                  }
+              });
+
           }
+
+          public abstract void onPosterClick(SimpleDraweeView draweeView);
+
+
 
     }
 

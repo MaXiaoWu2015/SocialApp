@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.entity.RecommendNewAlbumEntity;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -39,6 +40,11 @@ public class RecommendNewAlbumAdapter extends RecommendBaseAdapter<RecommendNewA
 
         public RecommendNewAlbumHolder(View itemView) {
             super(itemView);
+        }
+
+        @Override
+        public void onPosterClick(SimpleDraweeView draweeView) {
+
         }
     }
 }
