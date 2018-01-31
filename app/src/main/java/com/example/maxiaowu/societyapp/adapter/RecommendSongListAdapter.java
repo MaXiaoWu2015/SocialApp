@@ -1,34 +1,23 @@
 package com.example.maxiaowu.societyapp.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.RectF;
 import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
-import android.transition.ChangeImageTransform;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.aqy.matingting.basiclibrary.utils.CollectionUtils;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.activity.RecommendSubPageActivity;
 import com.example.maxiaowu.societyapp.entity.RecommendSongListEntity;
-import com.example.maxiaowu.societyapp.fragment.RecommendSubPageFragment;
-import com.facebook.drawee.drawable.ScalingUtils;
-import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
-import com.facebook.drawee.view.DraweeTransition;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
@@ -59,12 +48,17 @@ public class RecommendSongListAdapter extends RecommendBaseAdapter<RecommendSong
         return holder;
     }
 
+    public SimpleDraweeView view;
+
     @Override
     public void setData2View(RecommendSongListEntity item, RecommendSongListHolder holder) {
         holder.sd_recommend_list_single_item_poster.setImageURI(item.getPic());
         holder.tv_recommend_list_single_item_count.setText(spanString);
         holder.tv_recommend_list_single_item_count.append(dataFormat(item.getListenum()));//TODO:数字格式相关工具类
         holder.tv_recommend_list_single_item_desc.setText(item.getTag());
+        view = holder.sd_recommend_list_single_item_poster;
+        RectF rectF = new RectF();
+        view.getHierarchy().getActualImageBounds(rectF);
     }
 
     private String dataFormat(String listNum){

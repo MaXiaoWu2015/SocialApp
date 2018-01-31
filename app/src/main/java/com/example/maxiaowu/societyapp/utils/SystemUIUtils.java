@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
@@ -39,7 +38,7 @@ public class SystemUIUtils {
         if (activity == null || activity.getWindow() == null) return;
 
         Window window = activity.getWindow();
-        ViewGroup contentView =window.findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup contentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
         final View childView = contentView.getChildAt(0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -75,7 +74,7 @@ public class SystemUIUtils {
 
         Window window = activity.getWindow();
 
-        ViewGroup contentView =window.findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup contentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
         View childView = contentView.getChildAt(0);
 
         //5.0以上, 直接改变状态栏的颜色

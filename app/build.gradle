@@ -30,5 +30,4 @@ dependencies {
     compile project(path: ':router-compile')
     compile project(':basic_library')
     compile 'com.facebook.rebound:rebound:0.3.8'
-    compile 'com.android.support:support-v4:26.1.0'
 }

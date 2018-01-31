@@ -48,14 +48,13 @@ public class RecommendSubPageFragment extends Fragment {
             headerIconUrl = getArguments().getString(HEADER_ICON_URL);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_recommend_sub_page, container, false);
-        recommend_sub_page_header_icon = rootView.findViewById(R.id.recommend_sub_page_header_icon);
+//        recommend_sub_page_header_icon = (SimpleDraweeView) rootView.findViewById(R.id.recommend_sub_page_header_icon);
         ViewCompat.setTransitionName(recommend_sub_page_header_icon,"recommend_songlist_poster_fragment0");
 
         return rootView;

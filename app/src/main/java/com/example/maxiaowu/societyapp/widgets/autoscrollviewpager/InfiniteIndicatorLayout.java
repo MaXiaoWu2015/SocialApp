@@ -3,7 +3,6 @@ package com.example.maxiaowu.societyapp.widgets.autoscrollviewpager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -13,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.aqy.matingting.basiclibrary.R2;
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.RecyclingPagerAdapter;
-import com.example.maxiaowu.societyapp.http.HttpUtils;
 import com.example.maxiaowu.societyapp.utils.ImageLoaderManager;
 import com.example.maxiaowu.societyapp.widgets.autoscrollviewpager.indicator.CirclePageIndicator;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -79,8 +76,8 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements
         mContext=context;
         inflate(mContext,R.layout.infinite_indicator_layout,this);
         ButterKnife.bind(this);
-        mViewPager = findViewById(R.id.vp_img);
-        mPageIndicators = findViewById(R.id.cpi_for_img);
+        mViewPager = (ViewPager) findViewById(R.id.vp_img);
+        mPageIndicators = (CirclePageIndicator) findViewById(R.id.cpi_for_img);
 
         initData();
         mViewPager.addOnPageChangeListener(this);

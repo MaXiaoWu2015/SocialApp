@@ -1,6 +1,7 @@
 package com.example.maxiaowu.societyapp.fragment;
 
 import android.annotation.SuppressLint;
+import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -147,6 +148,19 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
         }.execute();
     }
 
+    RecommendSongListAdapter adapter;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        RectF rectF = new RectF();
+        if (adapter != null && adapter.view != null){
+            adapter.view.getHierarchy().getActualImageBounds(rectF);
+        }
+    }
+
+
+
     private void updateRecommendUI() {
         if (recommendEntity!=null){
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -158,7 +172,7 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
                 //Fixed:draw()时为什么不能调用addView or removeView;跟addView调用requestLayout()有什么关系;requestlayout与invalidate有什么区别
                 ll_recommend_content.addView(recommendSongListLayout,0);
                 RecommendHolder songListHolder = new RecommendHolder(recommendSongListLayout);
-                songListHolder.setData2View(R.string.recommend_song_list_title,Cons.SONG_LIST,new RecommendSongListAdapter(mActivity,recommendEntity.getSongListEntities()));
+                songListHolder.setData2View(R.string.recommend_song_list_title,Cons.SONG_LIST,adapter = new RecommendSongListAdapter(mActivity,recommendEntity.getSongListEntities()));
             }
 
             if (!CollectionUtils.isEmpty(recommendEntity.getNewAlbumEntities())){
