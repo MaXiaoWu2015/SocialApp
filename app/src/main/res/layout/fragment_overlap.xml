@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.maxiaowu.societyapp.transition_demo.OverlapFragment">
+
+    <ImageView
+        android:id="@+id/blueBall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/constant_color_ball"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="50dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is a blue ball"
+        android:layout_toRightOf="@+id/blueBall"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

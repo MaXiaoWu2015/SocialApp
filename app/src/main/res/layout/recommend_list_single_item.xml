@@ -9,7 +9,7 @@
     android:layout_height="110dp"
     android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <com.example.maxiaowu.societyapp.widgets.ShareElementDraweeView
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:id="@+id/sd_recommend_list_single_item_poster"

@@ -1,1 +1,17 @@
 #### Fragment Transition使用
+
+
+
+#### Transition VS Animation
+> 当多个View或者整个页面同时做某个或多个动画时,使用Transition  API19是加入Transition,但是只针对Scene(场景) API21时才加入了Activity/Fragment的转换 
+```
+https://www.jianshu.com/p/692284dc3646
+
+TransitionManager.go(Scene)实现流程  1.保存当前Scene的状态   2.remove当前Views,加载下一个Scene的布局   3.在Overlay层进行Transition动画
+```
+
+>单个或者少数View做动画,使用Animation
+
+#### Transition
+> 内部是由属性动画实现,但是它可以保存CurScene和EndScene中View的属性状态
+>该类的核心方法Transition#playTransition()

@@ -36,11 +36,13 @@
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <!--<intent-filter>-->
+             <!--<action android:name="android.intent.action.MAIN" />-->
+
+
+             <!--<category android:name="android.intent.category.LAUNCHER" />-->
+             <!--</intent-filter>-->
         </activity>
         <activity android:name=".activity.BaseActivity" />
         <!-- <activity android:name=".activity.TestActivity"> -->
@@ -51,7 +53,28 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".activity.RecommendSubPageActivity"></activity>
+        <activity android:name=".activity.RecommendSubPageActivity" />
+        <activity android:name=".activity.TestActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".transition_demo.TransitionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".transition_demo.FirstTransitionActivity" />
+        <activity android:name=".transition_demo.SecondShareElementActivity" />
+        <activity android:name=".transition_demo.ViewAnimationActivity" />
+        <activity android:name=".transition_demo.ScenesActivity" />
+        <activity android:name=".transition_demo.RevealActivity"></activity>
     </application>
 
 </manifest>

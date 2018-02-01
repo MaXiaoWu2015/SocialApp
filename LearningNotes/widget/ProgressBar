@@ -1,0 +1,4 @@
+####自定义ProgressBar
+>重写ProgressBarDrawable,对应的是一个LayerListDrawable,里面有三个item,background、secondaryProgress、progress,
+>后面两个必须由clipDrawable实现,否则无法设置进度条进度,通过粗略的浏览源码,发现Progressbar就是根据ClipDrawable
+>配合setLevel实现的

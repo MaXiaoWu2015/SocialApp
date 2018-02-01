@@ -1,4 +1,4 @@
-package com.example.maxiaowu.societyapp.adapter.viewholder;
+package com.example.maxiaowu.societyapp.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

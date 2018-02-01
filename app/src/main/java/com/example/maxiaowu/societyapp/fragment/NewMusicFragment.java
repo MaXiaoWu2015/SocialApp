@@ -154,9 +154,6 @@ public class NewMusicFragment extends BaseFragment implements View.OnClickListen
     public void onResume() {
         super.onResume();
         RectF rectF = new RectF();
-        if (adapter != null && adapter.view != null){
-            adapter.view.getHierarchy().getActualImageBounds(rectF);
-        }
     }
 
 

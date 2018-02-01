@@ -33,4 +33,29 @@
         <item name="android:textSize">9.0sp</item>
         <item name="android:textColor">@color/menu_item_white</item>
     </style>
+
+    <style name="MaterialAnimations">
+
+    </style>
+
+    <style name="MaterialAnimations.Icon">
+
+        <item name="android:layout_margin">10dp</item>
+
+    </style>
+
+    <style name="MaterialAnimations.Icon.Big">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="MaterialAnimations.Button">
+        <item name="android:scaleX">0</item>
+        <item name="android:scaleY">0</item>
+    </style>
+
+    <style name="CustomProgressBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:background">@drawable/clip_progress_demo</item>
+        <item name="android:progressDrawable">@drawable/clip_progress_drawable</item>
+    </style>
 </resources>
