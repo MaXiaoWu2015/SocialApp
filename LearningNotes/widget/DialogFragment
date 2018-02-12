@@ -1,0 +1,4 @@
+#### DialogFragment
+>onCreateDialog:使用自己创建的Dialog对象  
+>
+>onCreateView: 提供Dialog的content

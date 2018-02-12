@@ -4,11 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.maxiaowu.societyapp.activity.TestActivity">
 
-    <com.example.maxiaowu.societyapp.widgets.custom_view_demo.CustomView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <!--<com.example.maxiaowu.societyapp.widgets.custom_view_demo.CustomView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--/>-->
+<Button
+    android:layout_width="100dp"
+    android:layout_height="60dp"
+    android:onClick="requestPermission"
+    />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:onClick="showDialog"
+        android:background="@drawable/pp_subscribe_dialog_text_view_bg"
         />
+
+
+    <FrameLayout
+        android:clipToPadding="false"
+        android:layout_width="270dp"
+        android:layout_height="248dp"
+        android:paddingTop="46dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background = "@color/yellow"
+        >
+
+        <ImageView
+            android:layout_width = "165dp"
+            android:layout_height = "85dp"
+            android:background="@color/blue"
+            android:layout_marginTop="-46dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -6,6 +6,10 @@
     <uses-sdk tools:overrideLibrary="com.bilibili.magicasakura" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:name=".App"
@@ -37,12 +41,12 @@
             android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
 
-             <!--<intent-filter>-->
-             <!--<action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-             <!--<category android:name="android.intent.category.LAUNCHER" />-->
-             <!--</intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity.BaseActivity" />
         <!-- <activity android:name=".activity.TestActivity"> -->
@@ -55,6 +59,13 @@
         <!-- </activity> -->
         <activity android:name=".activity.RecommendSubPageActivity" />
         <activity android:name=".activity.TestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".transition_demo.TransitionActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -63,18 +74,26 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".transition_demo.TransitionActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".transition_demo.FirstTransitionActivity" />
         <activity android:name=".transition_demo.SecondShareElementActivity" />
         <activity android:name=".transition_demo.ViewAnimationActivity" />
         <activity android:name=".transition_demo.ScenesActivity" />
-        <activity android:name=".transition_demo.RevealActivity"></activity>
+        <activity android:name=".transition_demo.RevealActivity" />
+        <activity
+            android:name=".permission.TintDialogHolderActivity"
+            android:theme="@style/EasyPermissions.Transparent" />
+        <activity
+            android:name=".activity.Test2Activity"
+            android:theme="@style/EasyPermissions.Transparent" >
+
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
     </application>
 
 </manifest>

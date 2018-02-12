@@ -58,4 +58,24 @@
         <item name="android:background">@drawable/clip_progress_demo</item>
         <item name="android:progressDrawable">@drawable/clip_progress_drawable</item>
     </style>
+
+    <style name="TineDialogTheme" parent="Theme.AppCompat.Dialog.MinWidth">
+
+    </style>
+    <style name="EasyPermissions" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#ff80cbc4</item>
+    </style>
+    <style name="EasyPermissions.Transparent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <!--<item name="android:backgroundDimEnabled">false</item>-->
+    </style>
+
+
+
 </resources>

@@ -13,10 +13,11 @@ import butterknife.ButterKnife;
 
 public class App extends Application {
 
-
+    public static Application application;
 
     @Override
     public void onCreate() {
+        application = this;
         super.onCreate();
         Fresco.initialize(this);
         CommonApp.setApplication(this);

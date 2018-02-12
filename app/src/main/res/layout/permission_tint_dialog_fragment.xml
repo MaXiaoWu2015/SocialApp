@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:gravity="center_horizontal"
+    >
+
+    <Button
+        android:id="@+id/notification"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="打开通知功能"
+        android:onClick="openNotification"
+        />
+
+    <Button
+        android:id="@+id/calendar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="打开日历权限"
+        android:onClick="openCalendar"/>
+</LinearLayout>
