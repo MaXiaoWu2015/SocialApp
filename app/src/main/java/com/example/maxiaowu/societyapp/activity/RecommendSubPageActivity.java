@@ -6,27 +6,28 @@ import android.graphics.drawable.TransitionDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Transition;
-import android.view.Window;
-import android.widget.ImageView;
-
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.PlayListAdapter;
+import com.example.maxiaowu.societyapp.utils.ImageLoaderManager;
+import com.example.maxiaowu.societyapp.widgets.ptr.CommonRecyclerView;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.view.DraweeTransition;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.postprocessors.IterativeBoxBlurPostProcessor;
 
 public class RecommendSubPageActivity extends AppCompatActivity {
-
+    private static final String TAG = "RecommendSubPageActivit";
     private SimpleDraweeView mHeaderIcon;
-
-    private RecyclerView recyclerView;
-
+    private SimpleDraweeView mHeaderBg;
+    private CommonRecyclerView recyclerView;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +56,30 @@ public class RecommendSubPageActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        mHeaderIcon = findViewById(R.id.image_transition);
-        ViewCompat.setTransitionName(mHeaderIcon, "recommend_songlist_poster");
+        collapsingToolbarLayout = findViewById(R.id.collapse_toolbar_layout);
+        AppBarLayout appBarLayout = findViewById(R.id.recomend_appbar_layout);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
 
+            }
+        });
+
+        mHeaderIcon = findViewById(R.id.image_transition);
+        mHeaderBg = findViewById(R.id.recommend_sub_page_bg);
+        ViewCompat.setTransitionName(mHeaderIcon, "recommend_songlist_poster");
         recyclerView = findViewById(R.id.play_list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new PlayListAdapter(this));
+
 
     }
 
 
     public void setData2View() {
-        String iconurl = getIntent().getExtras().getString("recommend_icon_url");
-        mHeaderIcon.setImageURI(Uri.parse(iconurl));
-
+        String iconUrl = getIntent().getExtras().getString("recommend_icon_url");
+        mHeaderIcon.setImageURI(Uri.parse(iconUrl));
+        ImageLoaderManager.loadImage(iconUrl,mHeaderBg,new IterativeBoxBlurPostProcessor(8,80),false);
 
     }
 }

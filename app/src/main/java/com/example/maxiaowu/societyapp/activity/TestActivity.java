@@ -59,4 +59,8 @@ public class TestActivity extends AppCompatActivity {
 
         startActivity(new Intent(this,TintDialogHolderActivity.class));
     }
+
+    public void ClickMove(View view) {
+        view.offsetTopAndBottom(5);
+    }
 }

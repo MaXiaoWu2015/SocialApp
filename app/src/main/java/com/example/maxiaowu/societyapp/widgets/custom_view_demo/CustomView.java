@@ -2,16 +2,24 @@ package com.example.maxiaowu.societyapp.widgets.custom_view_demo;
 
 
 import android.content.Context;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.maxiaowu.societyapp.R;
 
 public class CustomView extends View {
     private static final float C = 0.551915024494f;
@@ -172,36 +180,36 @@ public class CustomView extends View {
 //            canvas.drawArc(300,250,700,650,-118,56,true,mPaint);
 
            //贝塞尔曲线绘制心形
-           drawCoordinateSystem(canvas);
-
-//           canvas.translate(mCenterX,mCenterY);
-//           canvas.scale(1,-1);
-
-
-           drawControlAndData(canvas);
-
-           mPaint.setColor(Color.RED);
-           mPaint.setStrokeWidth(8);
-           mPath.reset();
-        mPath.moveTo(mData[0],mData[1]);
-        mPath.cubicTo(mCtrl[0],mCtrl[1],mCtrl[2],mCtrl[3],mData[2],mData[3]);
-        mPath.cubicTo(mCtrl[4],  mCtrl[5],  mCtrl[6],  mCtrl[7], mData[4], mData[5]);
-        mPath.cubicTo(mCtrl[8],  mCtrl[9],  mCtrl[10], mCtrl[11],mData[6], mData[7]);
-        mPath.cubicTo(mCtrl[12], mCtrl[13], mCtrl[14], mCtrl[15],mData[0], mData[1]);
-
-        mPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawPath(mPath,mPaint);
-
-           mCurrent +=mPiece;
-           if (mCurrent < mDuration){
-               mData[1]-=120/mCount;
-               mCtrl[7]+=80/mCount;
-               mCtrl[9]+=80/mCount;
-
-               mCtrl[4]-=20/mCount;
-               mCtrl[10]+=20/mCount;
-               postInvalidateDelayed((long) mPiece);
-           }
+//           drawCoordinateSystem(canvas);
+//
+////           canvas.translate(mCenterX,mCenterY);
+////           canvas.scale(1,-1);
+//
+//
+//           drawControlAndData(canvas);
+//
+//           mPaint.setColor(Color.RED);
+//           mPaint.setStrokeWidth(8);
+//           mPath.reset();
+//        mPath.moveTo(mData[0],mData[1]);
+//        mPath.cubicTo(mCtrl[0],mCtrl[1],mCtrl[2],mCtrl[3],mData[2],mData[3]);
+//        mPath.cubicTo(mCtrl[4],  mCtrl[5],  mCtrl[6],  mCtrl[7], mData[4], mData[5]);
+//        mPath.cubicTo(mCtrl[8],  mCtrl[9],  mCtrl[10], mCtrl[11],mData[6], mData[7]);
+//        mPath.cubicTo(mCtrl[12], mCtrl[13], mCtrl[14], mCtrl[15],mData[0], mData[1]);
+//
+//        mPaint.setStyle(Paint.Style.STROKE);
+//        canvas.drawPath(mPath,mPaint);
+//
+//           mCurrent +=mPiece;
+//           if (mCurrent < mDuration){
+//               mData[1]-=120/mCount;
+//               mCtrl[7]+=80/mCount;
+//               mCtrl[9]+=80/mCount;
+//
+//               mCtrl[4]-=20/mCount;
+//               mCtrl[10]+=20/mCount;
+//               postInvalidateDelayed((long) mPiece);
+//           }
 
 
 
@@ -226,7 +234,55 @@ public class CustomView extends View {
 //            mPaint.setColor(Color.parseColor("#00ff00"));
 //            canvas.drawArc(300,300,700,700,45,135,true,mPaint);
 
+        //绘制文字
+        //1.drawText(String text, float x, float y, Paint paint)   y是文字基准线baseline的位置,x是文字
+        //起始的位置 (x,y)是靠近文字左下角的一个点
+        //2.drawTextOnPath(String text, Path path, float hOffset, float vOffset, Paint paint) 沿着某个路径绘制文字
+        // hOffset和vOffset 距离path的水平偏移量和竖直偏移量
+        //PS:以上两个方法绘制文字不能够自动换行,即使文字中包含\n也不行,只能自行将需要绘制的文字分开绘制实现换行
+        //StaticLayout----android.text.Layout的一个子类,可是通过设置StaticLayout的宽度使文字自动换行,也可以识别文字中的\n
 
+//        TextPaint textPaint = new TextPaint(mPaint);
+//           textPaint.setColor(Color.parseColor("#000000"));
+//        StaticLayout staticLayout = new StaticLayout("以上两个方法绘制文字不能够自动换行,即使文字中包含也不行,只能自行将需要绘制的文字分开绘制实现换行",
+//                textPaint, 600,Layout.Alignment.ALIGN_NORMAL,0,1,true);
+//        staticLayout.draw(canvas);
+
+        //Paint中关于绘制文字的API分为两类:文字显示效果(字体、颜色、粗细等) 和 测量文字尺寸
+        //paint.getFontSpacing:Return the recommend line spacing based on the current typeface and text size   两行文字baseline之间的距离
+        //paint.getFontMetrics():获取绘制文字的五条线:top ascent baseline descent bottom(都是以baseline为坐标系的)
+        //paint.getTextWidths(String text,float[] widths) 获取每个字符的宽度
+
+//        mPaint.setTextSize(30);
+//        mPaint.setColor(Color.parseColor("#000000"));
+//        canvas.drawText("我是谁你是说收代理费近两年福利费哈哈哈哈",100f,100f,mPaint);
+//        canvas.drawText("我怎么知道你是谁哈哈哈哈",100f,100f+mPaint.getFontSpacing(),mPaint);
+//        String text = "我是谁你是说收代理费近两年福利费哈哈哈哈";
+//        Rect rect = new Rect();
+//        mPaint.getTextBounds(text,0,text.length(),rect);//拿到的rect坐标是以文字baseline为坐标系的
+//        mPaint.setColor(Color.RED);
+//        rect.left+=100;
+//        rect.top+=100;
+//        rect.right+=100;
+//        rect.bottom+=100;
+//        mPaint.setStyle(Paint.Style.STROKE);
+//        canvas.drawRect(rect,mPaint);
+//        mPaint.setColor(Color.BLUE);
+//        mPaint.setTextSize(30);
+//        canvas.drawText(""+rect.top+":"+rect.left+":"+rect.right+":"+rect.bottom+"      "+mPaint.measureText(text),300,300,mPaint);
+//        mPaint.setColor(Color.parseColor("#ee06fe"));
+//        canvas.drawLine(100,100,100+mPaint.measureText(text),100,mPaint);
+
+
+        //Camera 3D变换
+
+        mPaint.setColor(Color.BLUE);
+        Camera camera = new Camera();
+        camera.save();
+        camera.translate(20,-50,-200);
+        camera.applyToCanvas(canvas);
+        camera.restore();
+        canvas.drawCircle(100,100,80,mPaint);
 
 
 

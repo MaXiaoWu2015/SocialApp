@@ -13,7 +13,6 @@ import com.example.maxiaowu.societyapp.R;
  */
 
 public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayListItemViewHolder> {
-
     private Context mContext;
 
     public PlayListAdapter(Context context){
