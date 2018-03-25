@@ -36,7 +36,6 @@ public class CommonRecyclerView extends PtrSimpleLayout<RecyclerView> {
         if (background != null){
             recyclerView.setBackgroundDrawable(background);
         }
-
         return recyclerView;
     }
 
@@ -61,6 +60,6 @@ public class CommonRecyclerView extends PtrSimpleLayout<RecyclerView> {
 
     @Override
     protected boolean canPullUp() {
-        return mContentView != null && mContentView.getTop() <= 0 && ((LinearLayoutManager)mContentView.getLayoutManager()).findLastCompletelyVisibleItemPosition() == 0;
+        return mContentView != null && mContentView.getTop() <= 0 && ((LinearLayoutManager)mContentView.getLayoutManager()).findLastCompletelyVisibleItemPosition() == mContentView.getAdapter().getItemCount()-1;
     }
 }

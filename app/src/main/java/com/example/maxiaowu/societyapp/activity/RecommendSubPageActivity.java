@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
 import com.example.maxiaowu.societyapp.R;
 import com.example.maxiaowu.societyapp.adapter.PlayListAdapter;
 import com.example.maxiaowu.societyapp.utils.ImageLoaderManager;
@@ -71,7 +73,6 @@ public class RecommendSubPageActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.play_list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new PlayListAdapter(this));
-
 
     }
 

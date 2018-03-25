@@ -6,14 +6,17 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.maxiaowu.societyapp.R;
+import com.example.maxiaowu.societyapp.adapter.PlayListAdapter;
 import com.example.maxiaowu.societyapp.permission.PermissionRequest;
 import com.example.maxiaowu.societyapp.permission.PermissionUtils;
 import com.example.maxiaowu.societyapp.permission.TintDialogHolderActivity;
 import com.example.maxiaowu.societyapp.permission.dialog.TintDialogFragment;
+import com.example.maxiaowu.societyapp.widgets.ptr.CommonRecyclerView;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -21,6 +24,9 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        ((CommonRecyclerView)findViewById(R.id.play_list_view)).setAdapter(new PlayListAdapter(this));
+        ((CommonRecyclerView)findViewById(R.id.play_list_view)).setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void requestPermission(View view) {

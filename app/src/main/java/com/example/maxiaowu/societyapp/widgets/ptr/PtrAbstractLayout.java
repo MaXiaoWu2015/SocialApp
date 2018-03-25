@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 
@@ -171,6 +172,29 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+
+        int action = MotionEventCompat.getActionMasked(ev);
+
+        Log.d(TAG, "dispatchTouchEvent: " +action);
+
+        int actionIndex = MotionEventCompat.getActionIndex(ev);
+
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_POINTER_DOWN:
+                mScrollPointerId = ev.getPointerId(actionIndex);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                isBeginDragged = false;
+                break;
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -188,7 +212,7 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
                 if (canPullUp() || canPullDown()){
                     mLastMotionY = ev.getY(eventIndex);
-                    isBeginDragged = true;
+                    isBeginDragged = false;//在DOWN的时候不要拦截事件,只在MOVE时根据判断的条件决定是否拦截
                 }
                 break;
 
@@ -207,7 +231,7 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
                 boolean canDragUp = (-detalY > mTouchSlop) && canPullUp();
 
-                boolean canDrag = isStartPosition() && (canDragDown || canDragUp);
+                boolean canDrag =  (canDragDown || canDragUp);
 
                 if (canDrag){
                     isBeginDragged = true;
@@ -271,32 +295,39 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
                 int moveIndex = event.findPointerIndex(mScrollPointerId);
 
                 float offset =  (event.getY(moveIndex)-mLastMotionY);
+                if (Math.abs(offset) > mTouchSlop){
+                    doMovePos(offset);
+                    mLastMotionY = event.getY(moveIndex);
+                }
 
-                doMovePos(offset);
-
-                mLastMotionY = event.getY(moveIndex);
                 return true;
 
             case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                if (event.getPointerCount() == 1){
+                    mLastMotionY = 0 ;
+                }
+
 
                 final int curTop = mContentView.getTop();
 
-                animator = ValueAnimator.ofInt(curTop,0).setDuration(200);
+                animator = ValueAnimator.ofInt(curTop,0).setDuration(500);
 
                   animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
-                        mContentView.offsetTopAndBottom( (int)animation.getAnimatedValue());
+                        mContentView.setTop((int) animation.getAnimatedValue());
+                        Log.d(TAG, "onAnimationUpdate: "+animation.getAnimatedValue()+":"+mContentView.getTop());
                     }
                 });
 
                 final int refreshTop = mRefreshView.getTop();
 
-                animator1 =ValueAnimator.ofInt(refreshTop,0).setDuration(200);
+                animator1 =ValueAnimator.ofInt(refreshTop,0).setDuration(300);
                  animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
-                        mRefreshView.offsetTopAndBottom( (int)animation.getAnimatedValue());
+                        mRefreshView.setTop((int) animation.getAnimatedValue());
 
                     }
                 });
@@ -312,13 +343,6 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
         return false;
     }
-
-
-
-
-
-
-
 
 
     private void doMovePos(float offset) {
@@ -343,16 +367,18 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
         mCurPosY = (int) to;
 
+        mContentView.offsetTopAndBottom((int) (offset / getResistance( offset > 0)));
         if (offset > 0){
-            mRefreshView.offsetTopAndBottom((int) (offset/2));
+            mRefreshView.offsetTopAndBottom((int) (offset/(2*getResistance(offset>0))));
         }else{
-            mLoadMoreView.offsetTopAndBottom((int) offset);
+            mLoadMoreView.setVisibility(VISIBLE);//必须要mLoadMoreView先设置为Invisible,然后再设置成visible,否则第一次不显示
+            mLoadMoreView.offsetTopAndBottom((int) (offset/ (getResistance(offset>0))));
         }
 
 
-        mContentView.offsetTopAndBottom((int) (offset / getResistance( offset > 0)));
 
-        Log.d(TAG, "doMovePos: "+"mCurPosY--"+mCurPosY+"   offset:"+(int) (offset / getResistance( offset > 0)));
+        Log.d(TAG, "doMovePos: "+"mCurPosY--"+mCurPosY+"   offset:"+(int) (offset / getResistance( offset > 0))
+        +"mLoadMore:"+this.getBottom()+":"+mContentView.getBottom());
 
     }
 
@@ -400,6 +426,32 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
     protected abstract boolean canPullDown();
 
     protected abstract boolean canPullUp();
+
+    public static class  LayoutParams extends FrameLayout.LayoutParams{
+
+        public LayoutParams(@NonNull Context c, @Nullable AttributeSet attrs) {
+            super(c, attrs);
+        }
+
+        public LayoutParams(int width, int height) {
+            super(width, height);
+        }
+
+        public LayoutParams(int width, int height, int gravity) {
+            super(width, height, gravity);
+        }
+
+        public LayoutParams(@NonNull ViewGroup.LayoutParams source) {
+            super(source);
+        }
+
+        public LayoutParams(@NonNull MarginLayoutParams source) {
+            super(source);
+        }
+
+    }
+
+
 
 
 }

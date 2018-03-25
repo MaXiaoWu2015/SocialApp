@@ -56,6 +56,10 @@ public abstract class PtrSimpleLayout<V extends View> extends PtrAbstractLayout<
 
         mLoadMoreView = loadMoreView;
         addView(mLoadMoreView);
+        mLoadMoreView.setVisibility(INVISIBLE);
+        if (mContentView != null){
+            mContentView.bringToFront();
+        }
 
 
     }
@@ -87,7 +91,7 @@ public abstract class PtrSimpleLayout<V extends View> extends PtrAbstractLayout<
         textView.setText("正在加载");
         textView.setTextSize(28);
         textView.setTextColor(Color.BLACK);
-
+        textView.setBackgroundColor(Color.BLUE);
         return textView;
     }
 }
