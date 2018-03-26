@@ -15,6 +15,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import android.widget.Scroller;
 
 /**
  * Created by matingting on 2018/3/22.
@@ -24,7 +25,7 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
     private static final String TAG = "PtrAbstractLayout";
 
-    protected  final static  int START_POS = 0;
+
 
     //下拉刷新最大高度
     protected  float mMaxPullOffset = 100.0f;
@@ -46,8 +47,18 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
     private int mTouchSlop = 0;
 
     protected int mCurPosY;
+
     public ValueAnimator animator ;
+
     private ValueAnimator animator1;
+
+    protected  PtrIndicator mPtrIndicator;
+
+    protected boolean enableRefresh = true;//是否开启下拉刷新
+
+    protected boolean enableLoadMore = false;
+
+
 
 
     public PtrAbstractLayout(@NonNull Context context) {
@@ -62,7 +73,7 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
         super(context, attrs, defStyleAttr);
 
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-
+        mPtrIndicator = new PtrIndicator();
     }
 
     @Override
@@ -190,6 +201,10 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 isBeginDragged = false;
+                if (mPtrIndicator.leftStartPosition()){
+                    onRelease();
+                }
+
                 break;
         }
 
@@ -308,33 +323,32 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
                     mLastMotionY = 0 ;
                 }
 
-
-                final int curTop = mContentView.getTop();
-
-                animator = ValueAnimator.ofInt(curTop,0).setDuration(500);
-
-                  animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        mContentView.setTop((int) animation.getAnimatedValue());
-                        Log.d(TAG, "onAnimationUpdate: "+animation.getAnimatedValue()+":"+mContentView.getTop());
-                    }
-                });
-
-                final int refreshTop = mRefreshView.getTop();
-
-                animator1 =ValueAnimator.ofInt(refreshTop,0).setDuration(300);
-                 animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        mRefreshView.setTop((int) animation.getAnimatedValue());
-
-                    }
-                });
-
-                AnimatorSet set = new AnimatorSet();
-                set.playTogether(animator,animator1);
-                set.start();
+//                final int curTop = mContentView.getTop();
+//
+//                animator = ValueAnimator.ofInt(curTop,0).setDuration(500);
+//
+//                  animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//                    @Override
+//                    public void onAnimationUpdate(ValueAnimator animation) {
+//                        mContentView.setTop((int) animation.getAnimatedValue());
+//                        Log.d(TAG, "onAnimationUpdate: "+animation.getAnimatedValue()+":"+mContentView.getTop());
+//                    }
+//                });
+//
+//                final int refreshTop = mRefreshView.getTop();
+//
+//                animator1 =ValueAnimator.ofInt(refreshTop,0).setDuration(300);
+//                 animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//                    @Override
+//                    public void onAnimationUpdate(ValueAnimator animation) {
+//                        mRefreshView.setTop((int) animation.getAnimatedValue());
+//
+//                    }
+//                });
+//
+//                AnimatorSet set = new AnimatorSet();
+//                set.playTogether(animator,animator1);
+//                set.start();
 
                 mCurPosY = 0;
                 return true;
@@ -367,6 +381,37 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
         mCurPosY = (int) to;
 
+        updatePos(offset);
+
+
+
+
+        Log.d(TAG, "doMovePos: "+"mCurPosY--"+mCurPosY+"   offset:"+(int) (offset / getResistance( offset > 0))
+        +"mLoadMore:"+this.getBottom()+":"+mContentView.getBottom());
+
+    }
+
+    private void updatePos(float offset) {
+
+        if (offset == 0){
+            return;
+        }
+
+        switch (mPtrIndicator.status){
+            case PtrIndicator.PTR_STATUS_INIT:
+                if (mPtrIndicator.justLeftStartPosition()){
+                    mPtrIndicator.status = PtrIndicator.PTR_STATUS_PREPARE;
+                }
+                break;
+            case PtrIndicator.PTR_STATUS_PREPARE:
+
+                break;
+        }
+
+
+
+
+
         mContentView.offsetTopAndBottom((int) (offset / getResistance( offset > 0)));
         if (offset > 0){
             mRefreshView.offsetTopAndBottom((int) (offset/(2*getResistance(offset>0))));
@@ -376,9 +421,23 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
         }
 
 
+    }
+    private void onRelease() {
+        switch (mPtrIndicator.status){
+            case PtrIndicator.PTR_STATUS_PREPARE:
+                break;
+            case PtrIndicator.PTR_STATUS_REFRESHING:
+            case PtrIndicator.PTR_STATUS_LOADING:
+                break;
+            case PtrIndicator.PTR_STATUS_COMPLETE:
+            default:
 
-        Log.d(TAG, "doMovePos: "+"mCurPosY--"+mCurPosY+"   offset:"+(int) (offset / getResistance( offset > 0))
-        +"mLoadMore:"+this.getBottom()+":"+mContentView.getBottom());
+                break;
+        }
+    }
+
+
+    private boolean tryScrollBackToOffset(){
 
     }
 
@@ -417,12 +476,6 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
     }
 
-
-
-    private boolean isStartPosition() {
-        return mCurPosY == START_POS;
-    }
-
     protected abstract boolean canPullDown();
 
     protected abstract boolean canPullUp();
@@ -451,7 +504,42 @@ public abstract class PtrAbstractLayout<V extends View> extends FrameLayout {
 
     }
 
+    public class ScrollChecker implements Runnable{
 
+        private Scroller mScroller;
+        private int mLastFlingY;//上次滚动距离
+
+        @Override
+        public void run() {
+
+            boolean finish = !mScroller.computeScrollOffset();
+
+
+
+
+
+
+        }
+
+
+        public void tryToScrollTo(int to,int duration){
+            if (mPtrIndicator.mCurrentPosY == to){
+                return;
+            }
+
+            int distance = to - mPtrIndicator.mCurrentPosY;
+            removeCallbacks(this);
+            mLastFlingY = 0;
+            if (!mScroller.isFinished()){
+                mScroller.abortAnimation();
+            }
+
+            mScroller.startScroll(0,0,0,distance,duration);
+            post(this);
+
+        }
+
+    }
 
 
 }
